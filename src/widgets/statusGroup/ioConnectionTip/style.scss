@@ -1,0 +1,39 @@
+@import "./IOStatus/index.scss";
+
+.hf.io-tip {
+    /* border-radius: 4px; */
+    /* background: var(--hf-primary-btn-color); */
+    color: var(--hf-text-normal);
+    box-sizing: border-box;
+    transition: 0.5s;
+    text-align: center;
+    .wrap {
+        color: var(--hf-theme-color);
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 2px;
+        height: 23px;
+        line-height: 21px;
+        border-radius: 3px;
+        font-size: 12px;
+        width: max-content;
+
+        &.connected {
+            order: 1px solid var(--hf-theme-color);
+            border: 1px solid var(--hf-theme-color);
+            color: var(--hf-theme-color);
+        }
+        &.disconnect {
+            order: 1px solid var(--hf-status-suspended);
+            border: 1px solid var(--hf-status-suspended);
+            color: var(--hf-status-suspended);
+        }
+    }
+    .box {
+        height: 21px;
+        width: max-content;
+        p {
+            width: max-content;
+        }
+    }
+}

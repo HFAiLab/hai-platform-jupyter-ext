@@ -1,0 +1,17 @@
+.exp2-panel {
+    &.no-current {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        span {
+            display: block;
+            padding: 20px;
+            line-height: 2;
+            text-align: center;
+            color: var(--hf-ui-font-color1);
+        }
+    }
+
+}

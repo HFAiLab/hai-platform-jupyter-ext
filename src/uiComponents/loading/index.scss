@@ -1,0 +1,40 @@
+
+@keyframes loading02 {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+
+.hf-loading {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* code #2 */
+    .loading-ani {
+        span {
+        animation: loading02 0.45s infinite alternate;
+        @for $i from 1 through 9 {
+            &:nth-child(#{$i+1}) {
+            animation-delay: #{$i*.05}s;
+            }
+        }
+        }
+    }
+    /* common */
+    .loading {
+        font-size: 48px;
+        color: grey;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        text-align: center;
+        span {
+            display: inline-block;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "HF AiLab Token",
+  "description": "Token of the HFAILab plugin.",
+  "type": "object",
+  "jupyter.lab.setting-icon": "hfext:logo",
+  "jupyter.lab.setting-icon-label": "HFAILab Extension",
+  "properties": {
+    "token": {
+      "type": "string",
+      "title": "Token",
+      "description": "Your API token for HFAILab service.",
+      "default": ""
+    }
+  }
+}

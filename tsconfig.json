@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": false,
+    "preserveWatchOutput": true,
+    "resolveJsonModule": true,
+    "outDir": "lib",
+    "rootDir": "src",
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es2017",
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/widgets/*"],
+      "@utils/*": ["src/utils/*"],
+      "react": ["./node_modules/@types/react"]
+    }
+  },
+  "include": [
+    "src/*",
+    "src/**/*.json",
+    "src/**/*.svg",
+    "src/**/*.tsx",
+    "src/**/*.ts"
+  ]
+}

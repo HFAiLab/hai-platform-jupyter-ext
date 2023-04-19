@@ -1,0 +1,33 @@
+
+
+.suspended-text {
+    color: var(--hf-status-suspended);
+}
+
+.running-text {
+    color: var(--hf-status-running);
+}
+
+.stopped-text {
+    color: var(--hf-status-stopped);
+}
+
+.success-text {
+    color: var(--hf-status-succeed);
+}
+
+.error-text {
+    color: var(--hf-status-error);
+}
+
+.not-submit-text {
+    color: grey;
+}
+
+.hf-select-container {
+    select {
+        // background-color: rgba(#5AA9E8, 0.2);
+        border-radius: 0px;
+        background-image: none;
+    }
+}

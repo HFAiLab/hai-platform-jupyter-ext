@@ -1,0 +1,42 @@
+{
+    "title": "HF AiLab Settings",
+    "description": "Settings of the HFAILab plugin.",
+    "type": "object",
+    "jupyter.lab.setting-icon": "hfext:logo",
+    "jupyter.lab.setting-icon-label": "HFAILab Extension",
+    "jupyter.lab.menus": {
+      "main": [
+        {
+          "id": "jp-mainmenu-file",
+          "items": [
+            {
+              "type": "separator",
+              "rank": 100
+            },
+            {
+              "command": "hfhub:control-panel",
+              "rank": 100
+            },
+            {
+              "type": "separator",
+              "rank": 100
+            }
+          ]
+        }
+      ]
+    },
+    "properties": {
+      "handleCR": {
+        "type": "boolean",
+        "title": "handleCR",
+        "description": "If set true, log viewer will handle CR('\\r') normally. Set false, it will handle CR as '\\n'.",
+        "default": false
+      },
+      "maxLogViewer": {
+        "type": "number",
+        "title": "maxLogViewer",
+        "description": "Max log viewer can show at same time.",
+        "default": 99
+      }
+    }
+  }

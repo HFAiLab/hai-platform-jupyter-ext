@@ -1,0 +1,23 @@
+.hf.ssh {
+    border-radius: 3px;
+    margin-top: 2px;
+    height: 23px;
+    /* background: var(--hf-primary-btn-color); */
+    font-size: 13px;
+    color: var(--hf-text-secondary);
+    border: 1px solid var(--hf-text-secondary);
+    line-height: 20px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.hf.ssh:hover {
+    box-shadow: rgba(0, 0, 0, .2) 0 1px 5px 0px;
+    transition: 0.3s;
+    background: var(--hf-primary-btn-hover);
+    color: #FFF;
+    border-color: var(--hf-primary-btn-hover);
+}

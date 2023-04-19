@@ -1,0 +1,109 @@
+.hf.info {
+    background: var(--jp-layout-color1);
+    overflow: auto;
+    overflow-y: overlay;
+
+    .wrapper {
+        padding: 10px;
+        color: var(--hf-ui-font-color1);
+    }
+
+    .hf-collapse {
+        margin-bottom: 10px;
+    }
+
+    .notifications {
+        .hai-ui-messageitem {
+            margin-bottom: 10px;
+        }
+
+        .no-message {
+            padding: 10px;
+            color: var(--hf-text-lighter);
+            border-radius: 3px;
+            border: 2px solid var(--jp-layout-color2);
+            text-align: center;
+        }
+    }
+}
+
+.submit-settings-container {
+    label.#{$ns}-label {
+        color: var(--hf-text-secondary);
+        font-weight: 900;
+        margin-bottom: 0;
+    }
+}
+
+.extra-mount {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.extra-options {
+    margin-bottom: 10px;
+    .extra-options-container {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    .env-op-container {
+        flex: 1;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .extra-options-unit {
+        margin-bottom: 10px;
+    }
+    .pair-input-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 5px;
+    }
+    .pair-input {
+        display: flex;
+        flex-direction: row;
+        .pair-input-key {
+            flex: 2
+        }
+        .pair-input-value {
+            flex: 1
+        }
+        .pair-input-key, .pair-input-value, .pair-input-fill-line {
+            margin-right: 0;
+            border-radius: 0px;
+
+            .#{$ns}-input {
+                border-radius: 0px;
+                position: relative;
+                cursor: auto;
+                border: 1px solid var(--hai-ui-gray5);
+                box-shadow: none;
+            }
+
+            &.active-input {
+                .#{$ns}-input {
+                    background: #2d72d221;
+                    box-shadow: none;
+                }
+            }
+        }
+        .pair-input-value {
+            .#{$ns}-input {
+                border-left: none;
+            }
+        }
+    
+        .pair-input-fill-line {
+            width: 100%;
+        }
+        margin-bottom: 5px;
+    }
+    .pair-add-one {
+        .pair-add-one-btn {
+            width: 40px;
+            min-height: 20px;
+        }
+    }
+
+}

@@ -1,0 +1,55 @@
+.hf.mem {
+    /* border-radius: 4px; */
+    /* background: var(--hf-primary-btn-color); */
+    color: var(--hf-text-normal);
+    box-sizing: border-box;
+    transition: 0.5s;
+    cursor: pointer;
+    text-align: center;
+
+    .wrap {
+        margin-top: 2px;
+        height: 23px;
+        line-height: 21px;
+        border: 1px solid var(--hf-text-secondary);
+        border-radius: 3px;
+        font-size: 12px;
+
+        .usagebox {
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            top: 0;
+            background: #47e51682;
+        }
+
+        &.high {
+            border-color: rgba(235, 83, 45, 1);
+
+            .usagebox {
+                background: rgba(235, 83, 45, 0.49);
+            }
+        }
+    }
+
+    .box {
+        height: 21px;
+        width: 70px;
+    }
+
+
+
+}
+
+.mem.pop {
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+
+    p {
+        line-height: 16px;
+        margin-top: 0px;
+        margin-bottom: 0;
+    }
+}

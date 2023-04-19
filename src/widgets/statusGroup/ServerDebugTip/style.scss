@@ -1,0 +1,21 @@
+.hf.kernel-debug-tip {
+    border-radius: 3px;
+    margin-top: 2px;
+    height: 23px;
+    border: 1px solid var(--hf-primary-btn-color);
+    font-size: 13px;
+    color: var(--hf-primary-btn-color);
+    line-height: 20px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.hf.kernel-debug-tip:hover {
+    box-shadow: rgba(0, 0, 0, .2) 0 1px 5px 0px;
+    transition: 0.3s;
+    background: var(--hf-primary-btn-color);
+    color: white;
+}

@@ -1,0 +1,8 @@
+.hf.top-title {
+    color: var(--hf-theme-color);
+    font-size: var(--hf-ui-font-size1);
+    font-weight: 700;
+    line-height: calc(var(--jp-private-menubar-height) - var(--jp-border-width));
+    margin: 0 60px 0 6px;
+    border-top: 1px solid #0000;
+}

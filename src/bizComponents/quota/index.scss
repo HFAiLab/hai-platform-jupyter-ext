@@ -1,0 +1,70 @@
+.quota-card {
+    width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.quota-card .btn-wrapper {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.quota-card .btn-wrapper span.updated-at {
+    display: inline-block;
+    color: var(--hf-text-lighter);
+    font-size: 13px;
+}
+
+/* group_detail */
+.quota-card .group-detail {
+    margin-bottom: 20px;
+}
+
+.quota-card .group-detail ul {
+    color: var(--hf-text-normal);
+    line-height: 28px;
+}
+
+.quota-card .group-detail ul li:nth-child(2n) {
+    background-color: #8c8c8c1a;
+}
+
+.quota-card .group-detail ul li span {
+    display: inline-block;
+}
+
+.quota-card .group-detail ul li span.edit a {
+    font-size: 12px;
+    color: var(--hf-theme-color);
+    margin: 0 4px;
+}
+
+.quota-card hr {
+    border-color: var(--jp-ui-font-color3);
+}
+
+.quota-refresh-container {
+    position: absolute;
+    right: 5px;
+    top: -20px;
+}
+
+.quota-table {
+    margin-top: 5px;
+    table td {
+        padding-left: 2px;
+        padding-right: 2px;
+        font-weight: 600;
+    }
+}
+
+.dynamic-quota {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: var(--hf-text-normal);
+    margin: 0 4px;
+    text-align: left;
+}

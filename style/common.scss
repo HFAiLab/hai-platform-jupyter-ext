@@ -1,0 +1,276 @@
+/* ------------variable---------- */
+// 颜色定义：
+
+$theme: #2d72d2;
+$ns: hai-ui;
+$bg-line-45deg: url(data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M2%2014H0V11.7573L11.7573%200H14V2L2%2014ZM14%2011.7573V14H11.7573L14%2011.7573ZM2%200L0%202V0H2Z%22%20fill%3D%22%2399999911%22%2F%3E%3C%2Fsvg%3E) !global;
+// 颜色定义：
+@import '@hai-ui/colors/src/_colors.scss';
+
+@font-face {
+    font-family: 'patch-source-code-variable';
+    src: url('./patch-source-code-variable.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'patch-source-code-pro';
+    src: url('./source-code-pro/SourceCodePro-Regular.ttf.woff') format('woff'),
+      url('./source-code-pro/SourceCodePro-Regular.ttf.woff2') format('woff2'),
+      url('./source-code-pro/SourceCodePro-Regular.ttf') format('truetype');
+  }
+
+// 这个字体给 monaco 日志渲染器使用，它如果需要画图的话，大部分字体都不行，需要指定一个特殊的字体
+.jp-OutputArea-output pre {
+    font-family: 'patch-source-code-pro';
+}
+
+body {
+    --hai-ui-layout-bg: var(--hai-ui-light-gray5);
+    --hai-ui-layout-1: #ffffff;
+    --hai-ui-layout-2: var(--hai-ui-light-gray4);
+    --hai-ui-layout-m1: var(--hai-ui-light-gray5);
+
+    --hai-ui-light-gray1: #{$light-gray1};
+    --hai-ui-light-gray2: #{$light-gray2};
+    --hai-ui-light-gray3: #{$light-gray3};
+    --hai-ui-light-gray4: #{$light-gray4};
+    --hai-ui-light-gray5: #{$light-gray5};
+
+    --hai-ui-gray1: #{$gray1};
+    --hai-ui-gray2: #{$gray2};
+    --hai-ui-gray3: #{$gray3};
+    --hai-ui-gray4: #{$gray4};
+    --hai-ui-gray5: #{$gray5};
+
+    --hai-ui-blue1: #{$blue1};
+    --hai-ui-blue2: #{$blue2};
+    --hai-ui-blue3: #{$blue3};
+    --hai-ui-blue4: #{$blue4};
+    --hai-ui-blue5: #{$blue5};
+
+    --hai-ui-green1: #{$green1};
+    --hai-ui-green2: #{$green2};
+    --hai-ui-green3: #{$green3};
+    --hai-ui-green4: #{$green4};
+    --hai-ui-green5: #{$green5};
+
+    --hai-ui-orange1: #{$orange1};
+    --hai-ui-orange2: #{$orange2};
+    --hai-ui-orange3: #{$orange3};
+    --hai-ui-orange4: #{$orange4};
+    --hai-ui-orange5: #{$orange5};
+
+    --hai-ui-red1: #{$red1};
+    --hai-ui-red2: #{$red2};
+    --hai-ui-red3: #{$red3};
+    --hai-ui-red4: #{$red4};
+    --hai-ui-red5: #{$red5};
+
+    --hai-ui-turquoise1: #{$turquoise1};
+    --hai-ui-turquoise2: #{$turquoise2};
+    // 这个颜色用来当 spot container 的颜色了
+    --hai-ui-turquoise3: #{$turquoise3};
+    --hai-ui-turquoise4: #{$turquoise4};
+    --hai-ui-turquoise5: #{$turquoise5};
+
+    --hf-theme-color: #2d72d2;
+    --hf-primary-btn-color: #2d72d2;
+    --hf-primary-btn-hover: #2d72d2;
+    --hf-theme-color-second: #489fe6bb;
+    --hf-theme-color-third: #6d97b9e0;
+    --hf-danger-btn-color: #d32f2f;
+    --hf-danger-btn-hover: #f44336;
+    --hf-disabled: #BBB;
+    --hf-ui-font-color0: #222;
+    --hf-ui-font-color1: #444;
+    --hf-ui-font-color2: #999;
+    --hf-ui-font-color3: #AAA;
+    --hf-text-normal: var(--hf-ui-font-color1);
+    --hf-text-secondary: var(--hf-ui-font-color2);
+    --hf-text-lighter: var(--hf-ui-font-color3);
+    --hf-option-bg: #FFF;
+    --hf-option-disabled: #BBB;
+    --hf-layout-light: #F7F7F7;
+    --hf-ui-highlight-bg: #9ad0ff3b;
+    --hf-ui-highlight-bg-light: #9ad0ff17;
+    --hf-table-border-color: #DDD;
+    /* status */
+    --hf-status-suspended: #ffa600ff;
+    --hf-status-running: #6ee089d2;
+    --hf-status-stopped: #8aa8c7;
+    --hf-status-succeed: #539664bf;
+    --hf-status-error: #cc5858d2;
+    --hf-highlight-block: #eef7ff;
+    --hf-highlight-tab: #ffeb86;
+
+    --hf-disabled-override: #5f5f5f;
+}
+
+body[data-jp-theme-light="false"] {
+    --hai-ui-layout-bg: #{$dark-gray1};
+    --hai-ui-layout-1: #{$dark-gray2};
+    --hai-ui-layout-2: #{$dark-gray3};
+    --hai-ui-layout-m1: #10161a;
+
+    --hf-ui-font-color0: #EEE;
+    --hf-ui-font-color1: #BBB;
+    --hf-ui-font-color2: #999;
+    --hf-ui-font-color3: #666;
+    --hf-option-bg: #303030;
+    --hf-text-normal: var(--hf-ui-font-color1);
+    --hf-text-secondary: var(--hf-ui-font-color2);
+    --hf-text-lighter: var(--hf-ui-font-color3);
+    /* --hf-layout-light: #333; */
+    --hf-layout-light: #171717;
+    --hf-table-border-color: #444;
+    --hf-highlight-block: #2D323A;
+    --hf-highlight-tab: #877103;
+
+    --hf-disabled-override: #d0d0d0;
+
+    --hai-ui-light-gray1: #{$dark-gray1};
+    --hai-ui-light-gray2: #{$dark-gray2};
+    --hai-ui-light-gray3: #{$dark-gray3};
+    --hai-ui-light-gray4: #{$dark-gray4};
+    --hai-ui-light-gray5: #{$dark-gray5};
+
+    --hai-ui-gray1: #{$dark-gray1};
+    --hai-ui-gray2: #{$dark-gray2};
+    --hai-ui-gray3: #{$dark-gray3};
+    --hai-ui-gray4: #{$dark-gray4};
+    --hai-ui-gray5: #{$dark-gray5};
+}
+
+$theme-light4: lighten($theme, 40%);
+$theme-light5: lighten($theme, 50%);
+$theme-light6: lighten($theme, 60%);
+
+// overwrite:
+$blue1: darken($theme, 20%);
+$blue2: darken($theme, 10%);
+$blue3: $theme;
+$blue4: lighten($theme, 10%);
+$blue5: lighten($theme, 20%);
+
+$dark-input-background-color: var(--hf-highlight-block);
+
+// HINT: 这个颜色和 number input 的边框有无有关
+$input-shadow-color-focus: $theme;
+
+.hf .ptr {
+    cursor: pointer;
+}
+
+.hf .in {
+    background: rgba($theme-light4, 0.5);
+}
+
+.#{$ns}-dark .in {
+    background: var(--hf-highlight-block);
+}
+
+.hf .inlineForm {
+    display: flex;
+    align-items: center;
+}
+
+/* reset */
+.hf ul,
+.hf li {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+/* ------------scrollbar---------- */
+
+/* firefox */
+
+.hf,
+.hf div {
+    /*bg fg*/
+    scrollbar-color: #a1a1a1 #dfdfdf;
+    scrollbar-width: thin;
+}
+
+/* webkit */
+
+.hf::-webkit-scrollbar,
+.hf div::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.hf::-webkit-scrollbar-thumb,
+.hf div::-webkit-scrollbar-thumb {
+    box-sizing: border-box;
+    border: 1px solid var(--jp-layout-color2);
+    border-radius: 2px;
+    /* background: rgba(0, 0, 0, 0.2); */
+    background: var(--jp-layout-color3);
+}
+
+.hf::-webkit-scrollbar-track,
+.hf div::-webkit-scrollbar-track {
+    background: var(--jp-layout-color0);
+}
+
+/* 右上角挂入组件自动右对齐 */
+
+#jp-top-panel .corner-component {
+    margin-right: 4px;
+}
+
+#jp-top-panel .corner-span {
+    margin-left: auto;
+}
+
+/* -----------clearfix--------------*/
+
+.hf .clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+
+/* fix jupyterlab bug */
+/* terminal 的 canvas 差两个像素 */
+.xterm .xterm-screen canvas {
+    border: none !important;
+}
+
+.jp-Dialog-body {
+    white-space: break-spaces;
+}
+
+.lm-TabBar-tabIcon.p-TabBar-tabIcon {
+    align-items: center;
+    display: flex;
+    svg[data-icon="ui-components:folder"] {
+        display: block;
+        height: auto;
+        margin: 0 auto;
+        width: 20px;
+    }
+}
+
+.jp-FileBrowser {
+    *,
+    *::before,
+    *::after {
+        box-sizing: unset;
+    }
+}
+
+// 覆盖 jupyter 的原生 active 样式
+.lm-DockPanel-tabBar .lm-TabBar-tab.jp-mod-current {
+    background-color: var(--hf-highlight-tab);
+}
+
+// 更改 lsp 插件补全提示框宽度限制，否则提示路径的时候显示不全
+.jp-Completer {
+    --lsp-completer-max-label-width: 900px !important;
+}

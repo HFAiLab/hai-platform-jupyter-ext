@@ -1,0 +1,38 @@
+.hf.logger {
+    padding: 10px;
+    overflow: auto;
+}
+
+.hf.logger ul, .hf.logger li {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.hf.logger pre {
+    margin: 0
+}
+
+.hf.logger .time {
+    font-size: 13px;
+    line-height: 20px;
+    color: #AAA;
+    margin-right: 20px;
+}
+
+.hf.logger .extlog {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.hf.logger .extlog-info {
+    color: #333;
+}
+
+.hf.logger .extlog-success {
+    color: #1d813b;
+}
+
+.hf.logger .extlog-error {
+    color: rgb(185, 36, 36);
+}

@@ -1,0 +1,11 @@
+.hf.APWindow {
+    padding: 10px;
+    background-color: var(--jp-layout-color1);
+    color: var(--hf-ui-font-color1);
+    overflow: auto;
+}
+
+.hf.APWindow .ap-widget {
+    height: 100%;
+    min-width: 550px;
+}
