@@ -100,7 +100,7 @@ export class HFLogViewer extends WidgetComponentBase<MainAreaWidget> {
         )
     }
 
-    // 多LOG窗口模式下已经没用了
+    // 多 LOG 窗口模式下已经没用了
     _createWidget() {
         const logViewerInstance = new LogWidgetExp(
             this._context!,
@@ -111,7 +111,7 @@ export class HFLogViewer extends WidgetComponentBase<MainAreaWidget> {
         return this._widget
     }
 
-    // 获取一个要被替换掉的log窗口
+    // 获取一个要被替换掉的 log 窗口
     _getWidgetFromPool(
         type: 'path' | 'chainId',
         query?: string | number | null,
@@ -193,9 +193,9 @@ export class HFLogViewer extends WidgetComponentBase<MainAreaWidget> {
         item!.widget.content.setChainAndRank(p.chain, rank)
         item!.widget.title.caption = item!.widget.title.label = `${
             p.chain.showName
-        } ${p.queryType == 'path' ? '-' : '|'} Log`
+        } ${p.queryType === 'path' ? '-' : '|'} Log`
 
-        if (p.queryType == 'path') {
+        if (p.queryType === 'path') {
             item!.widget.removeClass('q-chain')
             item!.widget.addClass('q-path')
         } else {
@@ -229,7 +229,7 @@ export class HFLogViewer extends WidgetComponentBase<MainAreaWidget> {
             item.openAt = new Date()
             if (found) {
                 let newRank =
-                    item.widget.content._chain!.chain_id == chain.chain_id
+                    item.widget.content._chain!.chain_id === chain.chain_id
                         ? item.widget.content._rank
                         : 0
                 if (newRank >= chain.pods.length) {
@@ -241,7 +241,7 @@ export class HFLogViewer extends WidgetComponentBase<MainAreaWidget> {
             }
             item.widget.title.caption = item.widget.title.label = chain
                 ? `${chain.showName} ${
-                      args.queryType == 'path' ? '-' : '|'
+                      args.queryType === 'path' ? '-' : '|'
                   } Log`
                 : 'No selected - Log'
             item.widget.removeClass('q-chain')
@@ -249,7 +249,7 @@ export class HFLogViewer extends WidgetComponentBase<MainAreaWidget> {
 
             this.addOrActivateWidget(item.widget, false)
         } else {
-            // 目前不处理chainId的逻辑
+            // 目前不处理 chainId 的逻辑
             return
         }
     }
@@ -273,7 +273,7 @@ export class HFLogViewer extends WidgetComponentBase<MainAreaWidget> {
                         activate
                     })
                 } else {
-                    // 注，从Pool创建widget时并未指定widget.id，因此lastItem.widget.id会是一个uuid
+                    // 注，从 Pool 创建 widget 时并未指定 widget.id，因此 lastItem.widget.id 会是一个 uuid
                     this._app.shell.add(widget, this._widgetArea, {
                         mode: 'tab-after',
                         ref: lastItem.widget.id,

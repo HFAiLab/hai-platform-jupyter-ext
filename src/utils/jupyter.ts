@@ -6,7 +6,7 @@ import { AppToaster } from './toast'
 export function tryOpenFile(
     app: JupyterFrontEnd,
     filePath: string,
-    ingore_error?: boolean
+    ignore_error?: boolean
 ) {
     return app.serviceManager.contents
         .get(filePath, { content: false })
@@ -17,7 +17,7 @@ export function tryOpenFile(
             return true
         })
         .catch(e => {
-            if (ingore_error) {
+            if (ignore_error) {
                 return
             }
             AppToaster.show({

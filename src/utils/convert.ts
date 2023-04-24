@@ -65,7 +65,7 @@ export const chainInitial = (chain_id: string): string => {
 }
 
 /**
- * If node name like "xx-yyyy-zz ", just retrun "yyyy"
+ * If node name like "xx-yyyy-zz ", just return "yyyy"
  * External user will show "hfai-rank-x"
  */
 export const shortNodeName = (name?: string | null): string | null => {
@@ -74,7 +74,7 @@ export const shortNodeName = (name?: string | null): string | null => {
     }
     const a = name.split('-')
     return a.length === 3
-        ? a[1] == 'rank'
+        ? a[1] === 'rank'
             ? 'hfai' // External user
             : a[1]
         : name

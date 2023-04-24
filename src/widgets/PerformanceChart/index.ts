@@ -57,7 +57,7 @@ export class HFPerformanceChart extends WidgetComponentBase<
         })
         // w.title.label = 'Perf - ' + chain.showName
         w.title.label = `${i18n.t(i18nKeys.biz_exp_perf)} ${
-            createrQueryType == 'chainId' ? '|' : '-'
+            createrQueryType === 'chainId' ? '|' : '-'
         } ${chain.showName}`
         w.title.icon = this._widgetIcon
         w.title.caption = w.title.label

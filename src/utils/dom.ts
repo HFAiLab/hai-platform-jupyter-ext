@@ -1,7 +1,7 @@
 let cache_width: number | null = null
 
 export function getScrollbarWidth() {
-    if (cache_width != null) {
+    if (cache_width !== null) {
         return cache_width
     }
     const outer = document.createElement('div')

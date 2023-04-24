@@ -210,7 +210,7 @@ export class JupyterShellCommandsAdder {
                     : '.sh File',
             caption: () => i18n.t(i18nKeys.biz_commands_create_new_sh),
             // @ts-ignore
-            icon: args => (args['isPalette'] ? undefined : labIcon.shfileIcon),
+            icon: args => (args['isPalette'] ? undefined : labIcon.shFileIcon),
             execute: args => {
                 const cwd =
                     args['cwd'] || this._fbFactory!.defaultBrowser.model.path

@@ -66,7 +66,7 @@ export class ApplySSH {
                         this._latch = false
                         if (
                             e.response &&
-                            e.response.status == 400 &&
+                            e.response.status === 400 &&
                             String(e).includes('用户不能申请更多的')
                         ) {
                             this.fillText(i18n.t(i18nKeys.biz_ssh_no_quota))

@@ -14,5 +14,5 @@ export function getDarkNameSpace() {
 }
 
 export function getThemeClassName(currentTheme: string) {
-    return currentTheme == 'JupyterLab Dark' ? getDarkNameSpace() : ''
+    return currentTheme === 'JupyterLab Dark' ? getDarkNameSpace() : ''
 }

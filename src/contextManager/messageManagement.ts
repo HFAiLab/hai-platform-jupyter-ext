@@ -3,7 +3,7 @@
  */
 import { GlobalAilabServerClient } from '@/serverConnection/ailabServer'
 import { AilabServerApiName } from '@hai-platform/client-ailab-server'
-import { CONSTS, MESSAGEMANAGER } from '@/consts'
+import { CONSTS, MESSAGE_MANAGER } from '@/consts'
 import HFLogger from '@/utils/log'
 import { HF_LOGGER_LEVEL } from '@hai-platform/logger'
 import { Signal } from '@lumino/signaling'
@@ -17,7 +17,7 @@ export class MessageManager {
         this.fetchMessage = this.fetchMessage.bind(this)
         this._timeInterval = setInterval(
             this.fetchMessage,
-            MESSAGEMANAGER.refreshInterval
+            MESSAGE_MANAGER.refreshInterval
         )
         document.addEventListener(
             'visibilitychange',
@@ -74,7 +74,7 @@ export class MessageManager {
         }
         if (
             this.lastRequestTime &&
-            Date.now() - this.lastRequestTime < MESSAGEMANAGER.refreshInterval
+            Date.now() - this.lastRequestTime < MESSAGE_MANAGER.refreshInterval
         ) {
             return
         }
@@ -94,7 +94,7 @@ export class MessageManager {
             })
             .catch(() => {
                 HFLogger.log(
-                    '[HF-MESSAGER]Fetch message failed.',
+                    '[HF-MESSENGER]Fetch message failed.',
                     HF_LOGGER_LEVEL.ERROR
                 )
             })

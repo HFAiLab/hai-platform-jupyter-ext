@@ -58,5 +58,5 @@ export function getUserAgentInfo() {
         version = 11
         return `IE-${version}`
     }
-    return 'unkonwn'
+    return 'unknown'
 }

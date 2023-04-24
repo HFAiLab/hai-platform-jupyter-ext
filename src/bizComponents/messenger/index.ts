@@ -1,2 +1,2 @@
 export { MessageItem } from './messageItem'
-export { Messager } from './messager'
+export { Messenger } from './messenger'

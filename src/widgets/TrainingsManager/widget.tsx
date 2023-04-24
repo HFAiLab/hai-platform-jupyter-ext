@@ -61,12 +61,12 @@ class Container implements ManagerContainerAPI {
     ): ExpsManageServiceResult[T] {
         if (key === ExpsManageServiceNames.getAutoShowLog) {
             return JSON.parse(
-                window.localStorage.getItem(CONSTS.SETTING_AUTO_SHOWLOG) ??
+                window.localStorage.getItem(CONSTS.SETTING_AUTO_SHOW_LOG) ??
                     'false'
             )
         } else if (key === ExpsManageServiceNames.setAutoShowLog) {
             window.localStorage.setItem(
-                CONSTS.SETTING_AUTO_SHOWLOG,
+                CONSTS.SETTING_AUTO_SHOW_LOG,
                 params ? 'true' : 'false'
             )
             return undefined as any
@@ -77,12 +77,12 @@ class Container implements ManagerContainerAPI {
         } else if (key === ExpsManageServiceNames.getTrainingsColumns) {
             return JSON.parse(
                 window.localStorage.getItem(
-                    CONSTS.SETTING_TRAINING_CUSTON_COLUMNS
-                ) || JSON.stringify(CONSTS.DEFAULT_TRAINING_CUSTON_COLUMNS)
+                    CONSTS.SETTING_TRAINING_CUSTOM_COLUMNS
+                ) || JSON.stringify(CONSTS.DEFAULT_TRAINING_CUSTOM_COLUMNS)
             ) as any
         } else if (key === ExpsManageServiceNames.setTrainingsColumns) {
             window.localStorage.setItem(
-                CONSTS.SETTING_TRAINING_CUSTON_COLUMNS,
+                CONSTS.SETTING_TRAINING_CUSTOM_COLUMNS,
                 JSON.stringify(params)
             )
             return undefined as any
@@ -146,7 +146,7 @@ type TrainingsWidgetOptions = TrainingContainerOptions
 
 export class TrainingsWidget extends ReactWidget {
     _manageApp: ManageApp
-    _capi: ManagerContainerAPI & BaseContainerAPI
+    _containerAPI: ManagerContainerAPI & BaseContainerAPI
 
     options: TrainingsWidgetOptions
 
@@ -156,12 +156,12 @@ export class TrainingsWidget extends ReactWidget {
         this._ctx = ctx
         this.addClass('hf')
         this.addClass('trainingsWindow')
-        this._capi = (new Container(
+        this._containerAPI = (new Container(
             this,
             ctx,
             this.options
         ) as unknown) as ManagerContainerAPI & BaseContainerAPI
-        this._manageApp = new ManageApp(this._capi)
+        this._manageApp = new ManageApp(this._containerAPI)
     }
 
     onThemeChanged() {

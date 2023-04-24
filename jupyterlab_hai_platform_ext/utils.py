@@ -2,12 +2,8 @@ import os
 import json
 from datetime import datetime
 
-if os.environ.get('DEBUG', 0):
-    from client.api import \
-        Experiment, BasePod
-else:
-    from hfai.client.api import \
-        Experiment, BasePod
+from hfai.client.api import \
+    Experiment, BasePod
 
 
 BASE_TYPES = [BasePod, datetime, str, list, dict, int, float, bool, set, type(None)]

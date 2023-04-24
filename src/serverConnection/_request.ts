@@ -1,5 +1,5 @@
 /**
- * Modified from jupyter's extension cookiecutter
+ * Modified from jupyter's extension cookie cutter
  */
 
 import { URLExt } from '@jupyterlab/coreutils'

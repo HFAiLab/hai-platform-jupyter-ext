@@ -1,4 +1,3 @@
-
 const getIsProduction = () => {
     try {
         // @ts-expect-error because process ignore

@@ -20,7 +20,7 @@ $icon-font-path: '../node_modules/@hai-ui/icons/resources/icons';
 @import '../src/uiComponents/loading/index.scss';
 
 @import '../src/bizComponents/quota/index.scss';
-@import '../src/bizComponents/messager/messager.scss';
+@import '../src/bizComponents/messenger/messenger.scss';
 @import '../src/bizComponents/globalOverview/index.scss';
 @import '../src/utils/toast.scss';
 
@@ -47,7 +47,6 @@ $icon-font-path: '../node_modules/@hai-ui/icons/resources/icons';
 /* UI */
 @import '../src/uiComponents/svgIcon/style.css';
 @import '../src/uiComponents/uikit/ui_kit_style.scss';
-@import '../src/uiComponents/common/style.css';
 
 // 覆盖 jupyter 的错误样式
 .tag-holder {

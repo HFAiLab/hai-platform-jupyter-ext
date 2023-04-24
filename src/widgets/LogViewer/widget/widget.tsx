@@ -110,11 +110,11 @@ export class LogWidgetExp extends Widget {
     }
 
     onAfterShow = (msg: any) => {
-        this.app && this.app.emit(EventsKeys.VisibilityChanged, true);
+        this.app && this.app.emit(EventsKeys.VisibilityChanged, true)
     }
 
     onAfterHide = (msg: any) => {
-        this.app && this.app.emit(EventsKeys.VisibilityChanged, false);
+        this.app && this.app.emit(EventsKeys.VisibilityChanged, false)
     }
 
     onAfterAttach = (msg: any) => {
@@ -203,7 +203,7 @@ export class LogWidgetExp extends Widget {
             )
             return
         }
-        if (this._chain.chain_id != args.chainId) {
+        if (this._chain.chain_id !== args.chainId) {
             return
         }
 

@@ -195,7 +195,7 @@
         pre {
             margin: 0;
             line-height: 20px;
-            /* Attention！MUST set min-height ,otherwise if item[0] is empty，vitrual scroll will crash when read a zero height item */
+            /* Attention！MUST set min-height ,otherwise if item[0] is empty，virtual scroll will crash when read a zero height item */
             min-height: 20px;
             min-width: 10px;
             color: var(--hf-text-normal);

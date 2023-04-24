@@ -36,7 +36,7 @@ export class HFExtensionLogger extends WidgetComponentBase<MainAreaWidget> {
     _createWidget(): MainAreaWidget<Widget> {
         this._widget = new MainAreaWidget({
             content: new ExtLoggerWidget(
-                this._extlogHandler.logUpdatedSginal,
+                this._extlogHandler.logUpdatedSignal,
                 this._extlogHandler.messages
             )
         })

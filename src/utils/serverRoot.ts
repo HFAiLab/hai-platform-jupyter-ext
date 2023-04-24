@@ -11,5 +11,4 @@ export function maybeCreatedWithJupyter(chain: Chain) {
     return (
         (chain.nb_name.endsWith('.py') || chain.nb_name.endsWith('.sh')) &&
         (chain.workspace.startsWith(root))
-    )
-}
+    )}

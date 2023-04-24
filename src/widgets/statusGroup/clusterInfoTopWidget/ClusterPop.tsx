@@ -196,7 +196,7 @@ export const ClusterPopUI = (props: {
             <div className="wrap">
                 <div className="box" style={{ position: 'relative' }}>
                     <div
-                        className="usagebox"
+                        className="usage-box"
                         style={{ right: String(100 - u) + '%' }}
                     ></div>
                     <div

@@ -1,6 +1,9 @@
 import { getCountlyBffUrl, VERSION } from '@/consts'
 import { PAGE_NAME } from './config'
-import { CountlyEvent, CountlyReport } from '@hai-platform/studio-toolkit/lib/esm/countly'
+import {
+    CountlyEvent,
+    CountlyReport
+} from '@hai-platform/studio-toolkit/lib/esm/countly'
 import { isProduction } from '../env'
 
 const DebugDeviceId = 'debug-device'
@@ -71,7 +74,12 @@ export class JupyterCountly {
     }
 
     static safeReport(key: CountlyEventKey, event?: CountlyEvent) {
-        if (!window.haiConfig?.countly?.apiKey || !window.haiConfig?.countly?.url) return;
+        if (
+            !window.haiConfig?.countly?.apiKey ||
+            !window.haiConfig?.countly?.url
+        ) {
+            return
+        }
         if (!isProduction) {
             // eslint-disable-next-line no-console
             console.info(`[debug] safeReport key: ${key}, event:`, event)
@@ -88,7 +96,12 @@ export class JupyterCountly {
     }
 
     static lazyInit() {
-        if (!window.haiConfig?.countly?.apiKey || !window.haiConfig?.countly?.url) return;
+        if (
+            !window.haiConfig?.countly?.apiKey ||
+            !window.haiConfig?.countly?.url
+        ) {
+            return
+        }
         jupyterCountly = new CountlyReport<CountlyEventKey>({
             apiKey: window.haiConfig.countly.apiKey,
             countlyURL: window.haiConfig.countly.url,

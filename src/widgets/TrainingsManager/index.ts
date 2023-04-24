@@ -50,8 +50,8 @@ export class TrainingsWindow extends WidgetComponentBase<MainAreaWidget> {
         // Add a global open command
         const { commands } = app
         commands.addCommand(OpenCommands.MyTrainings, {
-            label: 'HFAiLab Trainings',
-            caption: 'HFAiLab Trainings',
+            label: 'HFAILab Trainings',
+            caption: 'HFAILab Trainings',
             icon: labIcon.trainingsIcon,
             execute: args => {
                 if (args.manageState) {

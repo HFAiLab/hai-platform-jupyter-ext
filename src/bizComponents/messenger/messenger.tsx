@@ -4,7 +4,7 @@ import { IMessageItem, MessageItem } from './messageItem'
 import { getNameSpace } from '@/utils'
 import { ClusterUserMessageSchema } from '@hai-platform/shared'
 
-interface IMessager {
+interface IMessenger {
     messages: Array<ClusterUserMessageSchema>
     position: ToasterPosition
     closeHandler: IMessageItem['closeHandler']
@@ -12,7 +12,7 @@ interface IMessager {
     ItemExtraClass?: string
 }
 
-export const Messager: React.FC<IMessager> = ({
+export const Messenger: React.FC<IMessenger> = ({
     messages,
     position,
     closeHandler,
@@ -21,7 +21,7 @@ export const Messager: React.FC<IMessager> = ({
 }) => {
     return (
         <Toaster
-            className={`${getNameSpace()}-messager ${extraClass}`}
+            className={`${getNameSpace()}-messenger ${extraClass}`}
             position={position}
         >
             {messages.map(m => (

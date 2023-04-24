@@ -28,7 +28,7 @@ export const ExtLoggerComponent = (props: {
                 {props.logs.length ? (
                     props.logs.map((item, index) => (
                         <li key={index}>
-                            <LoglineComponent {...item} />
+                            <LogLineComponent {...item} />
                         </li>
                     ))
                 ) : (
@@ -44,7 +44,7 @@ export const ExtLoggerComponent = (props: {
  * @param props ILogMsg
  * @returns
  */
-const LoglineComponent = (props: ILogMsg): JSX.Element => {
+const LogLineComponent = (props: ILogMsg): JSX.Element => {
     const cssMap = {
         INFO: '',
         SUCCESS: 'extlog-success',

@@ -90,7 +90,7 @@ class Experiment2Container implements Experiment2ContainerAPI {
             // 如果是 null，它内部会把 Chain.workspace 自动包含
             return this.directoryList as any
         } else if (key === ServiceNames.getUserGroupList) {
-            return this._ctx._user.userInfo?.group_list || [] as any
+            return this._ctx._user.userInfo?.group_list || ([] as any)
         }
         throw new Error(`invokeService ${key} Method not implemented.`)
     }

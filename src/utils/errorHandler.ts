@@ -24,7 +24,7 @@ interface ErrorMessage {
 
 export enum ErrorStatus {
     Normal,
-    ErrorCatched
+    ErrorCaught
 }
 
 type ErrorListener = (errorStatus: ErrorStatus) => void
@@ -84,8 +84,8 @@ export class GlobalErrorHandler {
                 HF_LOGGER_LEVEL.INFO
             )
 
-            if (this.errorStatus != ErrorStatus.ErrorCatched) {
-                this.errorStatus = ErrorStatus.ErrorCatched
+            if (this.errorStatus !== ErrorStatus.ErrorCaught) {
+                this.errorStatus = ErrorStatus.ErrorCaught
                 for (const listener of this.listeners) {
                     listener(this.errorStatus)
                 }

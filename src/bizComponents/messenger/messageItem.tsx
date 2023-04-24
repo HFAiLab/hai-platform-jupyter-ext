@@ -53,7 +53,7 @@ export const MessageItem: React.FC<IMessageItem> = ({
 
     detailText = detailText ?? i18n.t(i18nKeys.biz_message_detail)
     type = type ?? 'normal'
-    const className = `${ns}-messageitem ${
+    const className = `${ns}-message-item ${
         asToast ? ns + '-toast' : ''
     } ${extraClass ?? ''} ${type ?? 'normal'}`
 

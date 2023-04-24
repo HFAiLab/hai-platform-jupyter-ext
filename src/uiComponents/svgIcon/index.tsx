@@ -12,7 +12,6 @@ import icon_help from '../../../images/icon/icon_help.svg'
 import icon_history from '../../../images/icon/icon_history.svg'
 import icon_home from '../../../images/icon/icon_home.svg'
 import icon_loading from '../../../images/icon/icon_loading.svg'
-import icon_nerv from '../../../images/icon/icon_nerv.svg'
 import icon_pause from '../../../images/icon/icon_pause.svg'
 import icon_refresh from '../../../images/icon/icon_refresh.svg'
 import icon_restart from '../../../images/icon/icon_restart.svg'
@@ -61,7 +60,6 @@ export namespace icons {
     export const history = icon_history
     export const home = icon_home
     export const loading = icon_loading
-    export const nerv = icon_nerv
     export const pause = icon_pause
     export const refresh = icon_refresh
     export const restart = icon_restart
@@ -94,7 +92,6 @@ export type TIcon =
     | 'history'
     | 'home'
     | 'loading'
-    | 'nerv'
     | 'pause'
     | 'refresh'
     | 'restart'
@@ -229,19 +226,19 @@ export const StatusIcon = (props: {
     let fill = null
     let icon = null
 
-    if (chainStatus == 'waiting_init') {
+    if (chainStatus === 'waiting_init') {
         fill = 'waiting_init'
         tooltip = 'ChainStatus: waiting_init'
         icon = icon_st_waiting_init
     }
-    if (chainStatus == 'suspended') {
+    if (chainStatus === 'suspended') {
         fill = 'suspended'
         tooltip = 'ChainStatus: suspended'
         icon = icon_st_suspended
     }
-    if (chainStatus == 'running') {
+    if (chainStatus === 'running') {
         fill = 'running'
-        if (workerStatus == 'running') {
+        if (workerStatus === 'running') {
             tooltip = 'ChainStatus: running'
             icon = icon_st_running
         } else {
@@ -249,13 +246,13 @@ export const StatusIcon = (props: {
             icon = icon_st_not_all_running
         }
     }
-    if (chainStatus == 'finished') {
+    if (chainStatus === 'finished') {
         icon = icon_st_stop
         tooltip = 'ChainStatus: finished, workerStatus: ' + workerStatus
 
-        if (workerStatus == 'succeeded') {
+        if (workerStatus === 'succeeded') {
             fill = 'succeed'
-        } else if (workerStatus == 'failed') {
+        } else if (workerStatus === 'failed') {
             icon = icon_error
             fill = 'error'
         } else {
@@ -279,7 +276,7 @@ export const StatusIcon = (props: {
 }
 
 /* Switcher */
-export const SwitcehrIcon = (props: {
+export const SwitcherIcon = (props: {
     handler: (x?: any) => void
     controller: boolean
     name: TIcon
@@ -291,15 +288,6 @@ export const SwitcehrIcon = (props: {
     style?: React.HTMLAttributes<HTMLElement>['style']
     zoom?: number
 }): JSX.Element => {
-    // const defaults = {
-    //     onFill: 'var(--hf-theme-color)',
-    //     offFill: 'var(--hf-ui-font-color2)',
-    //     onBg: 'var(--jp-layout-color0)',
-    //     offBg: 'var(--hf-ui-font-color3)'
-    // }
-    // const fill = props.controller ? (props.onFill ?? defaults.onFill) : (props.offFill ?? defaults.offFill)
-    // const onbg = props.controller ? { background: props.onBg ?? defaults.onBg } : { background: props.offBg ?? defaults.offBg }
-
     const scale = `scale(${props.zoom},${props.zoom})`
     return (
         <button

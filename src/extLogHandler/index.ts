@@ -14,12 +14,12 @@ export class ExtLogHandler {
     constructor(app: JupyterFrontEnd) {
         this._app = app
         this._messages = []
-        this._logUpdatedSginal = new Signal<this, any>(this)
+        this._logUpdatedSignal = new Signal<this, any>(this)
     }
 
     log(msg: string, type: 'INFO' | 'SUCCESS' | 'ERROR'): void {
         this._messages.push({ msg, type, time: new Date() })
-        this._logUpdatedSginal.emit(null)
+        this._logUpdatedSignal.emit(null)
     }
     info(msg: string) {
         this.log(msg, 'INFO')
@@ -31,8 +31,8 @@ export class ExtLogHandler {
         this.log(msg, 'ERROR')
     }
 
-    get logUpdatedSginal() {
-        return this._logUpdatedSginal
+    get logUpdatedSignal() {
+        return this._logUpdatedSignal
     }
 
     get messages() {
@@ -40,6 +40,6 @@ export class ExtLogHandler {
     }
 
     _app: JupyterFrontEnd
-    _logUpdatedSginal: Signal<this, any>
+    _logUpdatedSignal: Signal<this, any>
     _messages: Array<ILogMsg>
 }

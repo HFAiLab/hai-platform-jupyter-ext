@@ -13,7 +13,7 @@ import HFLogger from '@hai-platform/logger'
 import { getThemeColor } from '@/utils/dom'
 // import ThemePicker from "./sketchPicker";
 import { i18n, i18nKeys } from '@hai-platform/i18n'
-import { MessageItem } from '@/bizComponents/messager'
+import { MessageItem } from '@/bizComponents/messenger'
 import { downloadDialog } from '@hai-platform/studio-pages/lib/ui-components/dialog'
 
 const commandMap = {
@@ -144,7 +144,7 @@ const NavPanelComponent = (props: { context: Context }): JSX.Element => {
                         }
                     }}
                     className={
-                        errorStatus == ErrorStatus.ErrorCatched
+                        errorStatus === ErrorStatus.ErrorCaught
                             ? 'errorDetected'
                             : ''
                     }

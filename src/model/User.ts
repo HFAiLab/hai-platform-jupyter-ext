@@ -134,7 +134,8 @@ export class User {
                 token,
             }).then(userInfo => {
                 const isInternal = userInfo.group_list.includes('internal')
-                const inChanged =isInternal!= this._in
+                // eslint-disable-next-line eqeqeq
+                const inChanged = isInternal != this._in
                 this.userInfo = userInfo
                 window._hf_user_if_in = this._in = isInternal
                 inChanged && this._settingChanged.emit(null)

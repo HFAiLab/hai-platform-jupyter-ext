@@ -18,20 +18,8 @@ import logging
 import requests
 
 logger = logging.getLogger("hfai-lab")
-# import redis
 
-MARS_URL = os.environ.get('JUPYTER_LAB_MARS_URL', None)
 MARSV2_SPOT_JUPYTER = os.environ.get('MARSV2_SPOT_JUPYTER', '0')
-IS_PRODUCTION = MARS_URL == 'http://10.2.1.5:45123' and '--debug' not in sys.argv
-
-print(f'[ext] IS_PRODUCTION {IS_PRODUCTION}, MARS_URL: {MARS_URL}')
-
-# hint: not useful now
-# REDIS_HOST = 'frontend-redis-master.frontend-redis'
-# REDIS_PORT = 6379
-# REDIS_DB = 0
-# REDIS_PWD = 'BCMU03xqB0pG06K8'
-# redis_conn = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB, password=REDIS_PWD, decode_responses=True, socket_timeout=1)  # 同步的redis
 
 # The JupyterLab workspace file extension.
 WORKSPACE_EXTENSION = '.jupyterlab-workspace'
@@ -45,15 +33,11 @@ try:
     from hfai.client.api.experiment_api import validate_experiment
 except ImportError as e:
     print(
-        '\n\n\n=====================[HFAIEXT ImportError] import error:=====================', e)
+        '\n\n\n=====================[HFAI_EXT ImportError] import error:=====================', e)
     raise
 
-TASKID_MAP = {}
-NAME_ID_MAP = {}
 CLUSTER = os.environ.get('JUPYTER_LAB_CLUSTER', 'jd')
 SCP_TARGET_HOST = None
-AVAILABLE_PATH_SIGNATURE = os.environ.get(
-    'JUPYTER_LAB_AVAILABLE_PATH_SIGNATURE', '')
 
 # hint: 如果要自己定义请求地址，设置这几个环境变量：
 # MARSV2_USER_TOKEN MARSV2_SERVER MARSV2_BFF_URL MARSV2_VENV_PATH
@@ -63,13 +47,13 @@ USER = os.environ.get('JUPYTER_LAB_USER', 'invalid_user')
 USER_ROLE = os.environ.get('MARSV2_USER_ROLE', None)
 
 # 默认的 watchdog time，内部用户默认无限，外部用户默认 1 天
-DEFUALT_WATCHDOG_TIME = 99999999 if USER_ROLE == 'internal' else 86400
+DEFAULT_WATCHDOG_TIME = 99999999 if USER_ROLE == 'internal' else 86400
 # 外部用户每次点击可以增加的运行时长，默认 1 天，增加时长是指，如果不做其他操作，可以延长运行到 当前时间 + RENEW_WATCHDOG_TIME 的时刻
 RENEW_WATCHDOG_TIME = 86400
 # 开始运行的时间
 START_TIME = time.time()
 # 当前的 watchdog time
-CURRENT_WATCHDOG_TIME = DEFUALT_WATCHDOG_TIME
+CURRENT_WATCHDOG_TIME = DEFAULT_WATCHDOG_TIME
 set_watchdog_time(CURRENT_WATCHDOG_TIME)
 
 # 存储 ssh 配置，只需成功获取一次之后就不用再向 server 请求
@@ -188,7 +172,7 @@ async def post_formatter(post_handler: APIHandler):
         return token, action, input_data
     except Exception as e:
         status_code, response_data = response_formatter(
-            400, 0, f"POST请求预处理出错：{repr(e)}")
+            400, 0, f"POST请求预处理出错: {repr(e)}")
         post_handler.set_status(status_code)
         await post_handler.finish(custom_json_dumps(response_data, ensure_ascii=False))
         raise Exception("POST请求预处理出错")
@@ -467,15 +451,6 @@ class UserHandler(APIHandler):
         resp = await set_user_gpu_quota(group_label, priority_label, quota, token=kwargs['token'])
         return response_formatter(200, 1, 'success', resp)
 
-    # TODO: delete
-    @staticmethod
-    async def get_worker_user_info(input_data, **kwargs):
-        """set user gpu quota"""
-        print('get_worker_user_info from bff, token:', kwargs['token'])
-        r = requests.post(f'{BFF_URL}/trainings/data_panel/get_worker_user_info_lagacy', headers={"token": kwargs['token']})
-        quota = r.json()['data']
-        return response_formatter(200, 1, 'success', quota)
-
     @staticmethod
     async def get_storage(input_data, **kwargs):
         """get storage list"""
@@ -497,12 +472,12 @@ class UserHandler(APIHandler):
 
     @staticmethod
     async def get_global_tasks_overview(input_data, **kwargs):
-        resp = await get_tasks_overview(toknen=kwargs['token'])
+        resp = await get_tasks_overview(token=kwargs['token'])
         return response_formatter(200, 1, 'success', resp)
 
     @staticmethod
     async def get_global_cluster_overview(input_data, **kwargs):
-        resp = await get_cluster_overview(toknen=kwargs['token'])
+        resp = await get_cluster_overview(token=kwargs['token'])
         return response_formatter(200, 1, 'success', resp)
 
     @staticmethod
@@ -643,7 +618,7 @@ class JupyterHandler(APIHandler):
         global CURRENT_WATCHDOG_TIME
         running_seconds = time.time() - START_TIME
         # 最多可以延期到 running_seconds + RENEW_WATCHDOG_TIME
-        CURRENT_WATCHDOG_TIME = int(max([DEFUALT_WATCHDOG_TIME, running_seconds + RENEW_WATCHDOG_TIME]))
+        CURRENT_WATCHDOG_TIME = int(max([DEFAULT_WATCHDOG_TIME, running_seconds + RENEW_WATCHDOG_TIME]))
         set_watchdog_time(CURRENT_WATCHDOG_TIME)
         resp = {
             'msg': f'设置 watchdog_time 到 {CURRENT_WATCHDOG_TIME} 成功'
@@ -710,7 +685,7 @@ class JupyterNoHFAuthHandler(APIHandler):
             res = {
                 'bffURL':  os.environ.get('BFF_URL'), # JUPYTER_BFF_URL
                 'wsURL': os.environ.get('WS_URL'), # JUPYTER
-                'clusterServerURL': os.environ.get('JUPYTER_COUNTLY_URL'),
+                'clusterServerURL': os.environ.get('CLUSTER_SERVER_URL'), # 集群地址
             }
             if os.environ.get('JUPYTER_COUNTLY_URL') and os.environ.get('JUPYTER_COUNTLY_API_KEY'):
                 res['countly'] = {

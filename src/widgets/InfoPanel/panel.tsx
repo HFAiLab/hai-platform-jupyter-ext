@@ -4,7 +4,7 @@ import React from 'react'
 import { uikit } from '../../uiComponents'
 import { Quota } from '@/bizComponents/quota'
 import { ServiceContext } from '@/uiComponents/reactContext'
-import { MessageItem } from '@/bizComponents/messager'
+import { MessageItem } from '@/bizComponents/messenger'
 import { i18n, i18nKeys } from '@hai-platform/i18n'
 import { GlobalOverview } from '@/bizComponents/globalOverview'
 export class InfoPanelWidget extends ReactWidget {

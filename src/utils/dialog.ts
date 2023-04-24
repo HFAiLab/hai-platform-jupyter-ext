@@ -8,7 +8,7 @@ function _createSaveNode(value: string): HTMLElement {
     return (input as unknown) as HTMLElement
 }
 
-class _InputWidget extends Widget {
+class InputWidget extends Widget {
     /**
      * Make a modal node for getting input value.
      * @param value Default value.
@@ -29,8 +29,8 @@ class _InputWidget extends Widget {
  * Show a dialog then get a value from user.
  * @param title Title of the dialog.
  * @param defaultValue Default value of the input element.
- * @param btn Label of ok button, defalult 'Submit'.
- * @returns Intput value  or null.
+ * @param btn Label of ok button, default 'Submit'.
+ * @returns Input value  or null.
  */
 export const inputDialog = async (
     title: string,
@@ -42,7 +42,7 @@ export const inputDialog = async (
     })
     const result = await showDialog({
         title: title,
-        body: new _InputWidget(defaultValue),
+        body: new InputWidget(defaultValue),
         buttons: [
             Dialog.cancelButton({ label: i18n.t(i18nKeys.base_Cancel) }),
             submitBtn

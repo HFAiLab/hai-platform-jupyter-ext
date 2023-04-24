@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab_hai_platform_ext",
-  "version": "7.14.3",
+  "version": "7.14.4",
   "description": "A JupyterLab extension to use HF AiLab's service",
   "keywords": [
     "jupyter",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@hai-platform/sass-inline-svg": "2.0.0",
-    "@hai-platform/studio-pages": "0.19.0-alpha.1681893137676.da1d707d",
+    "@hai-platform/studio-pages": "0.19.0-alpha.1681979214.3af68b94",
     "@jupyterlab/application": "^3.2.0",
     "@jupyterlab/apputils": "^3.2.0",
     "@jupyterlab/console": "^3.2.0",
@@ -127,16 +127,6 @@
     "extension": true,
     "schemaDir": "schema",
     "outputDir": "jupyterlab_hai_platform_ext/labextension",
-    "webpackConfig": "./webpack.config.js",
-    "disabledExtensions": [
-      "@jupyterlab/application-extension:logo",
-      "@jupyterlab/launcher-extension:plugin",
-      "@jupyterlab/extensionmanager-extension:plugin",
-      "@jupyterlab/filebrowser-extension:widget",
-      "@jupyterlab/filebrowser-extension:factory",
-      "@jupyterlab/filebrowser-extension:open-with",
-      "@jupyterlab/filebrowser-extension:browser",
-      "@jupyterlab/apputils-extension:resolver"
-    ]
+    "webpackConfig": "./webpack.config.js"
   }
 }

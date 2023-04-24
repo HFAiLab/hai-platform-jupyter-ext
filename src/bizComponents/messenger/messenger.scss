@@ -6,7 +6,7 @@ body {
 }
 
 
-.#{$ns}-messageitem {
+.#{$ns}-message-item {
     padding: 8px 12px 8px 8px;
     display: block;
     border-radius: 4px;
@@ -100,11 +100,11 @@ body {
 
 }
 
-.#{$ns}-messager {
+.#{$ns}-messenger {
     padding-right: 40px;
     padding-bottom: 30px;
 
-    .#{$ns}-messageitem {
+    .#{$ns}-message-item {
         pointer-events: all;
         box-shadow: 2px 2px 4px rgba(20, 20, 20, 0.25);
 

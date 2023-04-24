@@ -27,7 +27,7 @@ class OnboardingManager {
     constructor() {}
 
     ifActiveOnboardingTypes(widgetKey: string, typeLists: OnBoardingTypes[]) {
-        if (this.currentWidgetKey == widgetKey) {
+        if (this.currentWidgetKey === widgetKey) {
             this.currentTypeLists = this.currentTypeLists.filter(
                 item => !item.consumed
             )
@@ -61,11 +61,11 @@ class OnboardingManager {
             HF_LOGGER_LEVEL.DEBUG
         )
 
-        if (widgetKey != this.currentWidgetKey) {
+        if (widgetKey !== this.currentWidgetKey) {
             return
         }
 
-        if (data.lifecycle != 'complete') {
+        if (data.lifecycle !== 'complete') {
             return
         }
         // 点击空白处会触发 close，点击 next 会触发 next
@@ -101,10 +101,10 @@ class OnboardingManager {
 
 export const onboardingManager = new OnboardingManager()
 
-export function ifOnboardingActive(otype: OnBoardingTypes) {
-    return !localStorage.getItem(`jp_onboarding_${otype}`)
+export function ifOnboardingActive(onBoardingType: OnBoardingTypes) {
+    return !localStorage.getItem(`jp_onboarding_${onBoardingType}`)
 }
 
-export function consumeOnboarding(otype: OnBoardingTypes) {
-    return localStorage.setItem(`jp_onboarding_${otype}`, 'used')
+export function consumeOnboarding(onBoardingType: OnBoardingTypes) {
+    return localStorage.setItem(`jp_onboarding_${onBoardingType}`, 'used')
 }

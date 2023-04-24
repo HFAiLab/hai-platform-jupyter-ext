@@ -15,7 +15,7 @@ import {
     getDocURL
 } from '@hai-platform/shared'
 
-export const VERSION = '7.14.3'
+export const VERSION = '7.14.4'
 
 export namespace CONSTS {
     export const WORKSPACE_ROOT_STR = '<workspace_root>'
@@ -23,22 +23,22 @@ export namespace CONSTS {
     export const DEFAULT_LOG_VIEWER_HEADER_HEIGHT = 34
     export const EXTENSION_CONFIG_KEY = 'jupyterlab_hai_platform_ext:config' // 目前这里只放 token，重启 hub 的时候会被重置
     export const EXTENSION_CONFIG_SETTINGS_KEY = 'jupyterlab_hai_platform_ext:settings' // 其他 settings
-    export const CREATING_SETTINGS_KEY = '@HFAiLab:CREAT_SETTINGS:'
+    export const CREATING_SETTINGS_KEY = '@HFAILab:CREATE_SETTINGS:'
     export const CREATING_SETTING_DEFAULT_NAME = '##DEFAULT_FILENAME##'
-    export const CLOSED_MESSAGE = '@HFAiLab:CLOSED_MESSAGE'
-    export const SETTING_SHOW_NODES = '@HFAiLab:SHOW_NODES'
-    export const SETTING_SHOW_LINETIME = '@HFAiLab:SHOW_LINETIME'
-    export const SETTING_AUTO_SHOWLOG = '@HFAiLab:AUTO_SHOW_LOG'
-    export const SETTING_TRAINING_CUSTON_COLUMNS =
-        '@HFAiLab:TRAINING_CUSTON_COLUMNS'
+    export const CLOSED_MESSAGE = '@HFAILab:CLOSED_MESSAGE'
+    export const SETTING_SHOW_NODES = '@HFAILab:SHOW_NODES'
+    export const SETTING_SHOW_LINE_TIME = '@HFAILab:SHOW_LINE_TIME'
+    export const SETTING_AUTO_SHOW_LOG = '@HFAILab:AUTO_SHOW_LOG'
+    export const SETTING_TRAINING_CUSTOM_COLUMNS =
+        '@HFAILab:TRAINING_CUSTOM_COLUMNS'
     export const DEFAULT_PRIORITY_VALUE_INTERNAL = 30
     export const DEFAULT_PRIORITY_VALUE_EXTERNAL = 0
     export const MEM_METRICS_REFRESH_INTERVAL_SEC = 5
     export const CLUSTER_REFRESH_INTERVAL_SEC = 30
-    export const IPYNB_DANGEROUSE_SIZE = 5 * 1024 * 1024 // > 1MB 时候提醒用户
+    export const IPYNB_DANGEROUS_SIZE = 5 * 1024 * 1024 // > 1MB 时候提醒用户
     export const TRAININGS_TITLE = 'AILAB Trainings' // Trainings 页面的标题
     export const GLOBAL_TITLE = 'HF AILAB' // Trainings 页面的标题
-    export const DEFAULT_TRAINING_CUSTON_COLUMNS = [
+    export const DEFAULT_TRAINING_CUSTOM_COLUMNS = [
         'gpu_util',
         'ib_rx',
         'ib_tx'
@@ -104,7 +104,7 @@ export interface RequiredPlugins {
     settingRegistry: ISettingRegistry
 }
 
-export const IHFcontext = new Token<Context>('jupyterlab_hai_platform_ext:Extension:Context')
+export const IHFContext = new Token<Context>('jupyterlab_hai_platform_ext:Extension:Context')
 
 declare global {
     interface Window {
@@ -155,6 +155,7 @@ export const docURL = getDocURL(commonGetURLProps)
 
 export const getGuides = () => {
     return [
+        // OPENSOURCE_DELETE_BEGIN
         {
             title: '集群基本介绍',
             desc: '学习如何使用幻方萤火集群',
@@ -165,10 +166,11 @@ export const getGuides = () => {
             desc: '了解幻方萤火集群服务的分时调度策略',
             URL: docURL + 'guide/schedule.html#'
         }
+        // OPENSOURCE_DELETE_END
     ]
 }
 
-export const MESSAGEMANAGER = {
+export const MESSAGE_MANAGER = {
     refreshInterval: 5 * 60 * 1000
 }
 

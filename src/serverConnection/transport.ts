@@ -58,7 +58,7 @@ export type IFilterItem = {
 }
 
 /**
- * Struct of a respose from server
+ * Struct of a response from server
  */
 interface ConnResponse<T> {
     success: 1 | 0

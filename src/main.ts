@@ -9,7 +9,7 @@ import { Context } from '@/contextManager'
 import { HFLogViewer } from './widgets/LogViewer'
 import { HFExtensionLogger } from './widgets/extensionLogger'
 import { ISettingRegistry } from '@jupyterlab/settingregistry'
-import { CONSTS, IHFcontext } from './consts'
+import { CONSTS, IHFContext } from './consts'
 import { InfoPanel } from './widgets/InfoPanel'
 import { NavigatorPanel } from './widgets/navPanel'
 import { Menu } from '@lumino/widgets'
@@ -36,7 +36,7 @@ import {
     getCurrentUserName,
     JupyterCountly
 } from '@/utils/countly/countly'
-import { MessagerWrapper } from './widgets/messager'
+import { MessengerWrapper } from './widgets/messenger'
 import { PageConfig } from '@jupyterlab/coreutils'
 import { IStatusBar } from '@jupyterlab/statusbar'
 import { ExperimentPanel } from './widgets/experimentSidePanel'
@@ -63,7 +63,7 @@ export const HFAILabExtension: JupyterFrontEndPlugin<Context> = {
         IStatusBar
     ],
     autoStart: true,
-    provides: IHFcontext,
+    provides: IHFContext,
     activate: async (
         app: JupyterFrontEnd,
         editorTracker: IEditorTracker,
@@ -239,8 +239,8 @@ export const HFAILabExtension: JupyterFrontEndPlugin<Context> = {
         // AvailablePathWindow
         new AvailablePathWindow(app, ctx).register(p)
 
-        // MessagerWrapper
-        new MessagerWrapper(app, ctx)
+        // MessengerWrapper
+        new MessengerWrapper(app, ctx)
 
         //Add shell commands
         new JupyterShellCommandsAdder(app, ctx).register(p)
@@ -271,7 +271,7 @@ export const HFAILabExtension: JupyterFrontEndPlugin<Context> = {
         const disableAllEditors = (): void => {
             editorTracker.forEach(doc => {
                 const fileEditor = doc.content
-                // hint: 有可能后面还会被后续流程更改，所以我们这里多做几次：
+                    // hint: 有可能后面还会被后续流程更改，所以我们这里多做几次：
                 ;[200, 1000, 2000].forEach((timeout: number) => {
                     setTimeout(() => {
                         fileEditor.editor.setOption('readOnly', true)

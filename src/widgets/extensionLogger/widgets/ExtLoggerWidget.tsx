@@ -6,7 +6,7 @@ import { ISignal } from '@lumino/signaling'
 
 import { ILogMsg } from '../../../extLogHandler'
 
-import { ExtLoggerComponent } from './_Extlogger'
+import { ExtLoggerComponent } from './ExtLogger'
 
 /**
  * A Widget for logger panel

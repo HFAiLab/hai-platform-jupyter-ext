@@ -2,7 +2,7 @@ import { LabIcon } from '@jupyterlab/ui-components'
 import ailab_icon_color from '../../images/icon/ailab_icon_color.svg'
 import ailab_icon_bw from '../../images/icon/ailab_icon_bw.svg'
 import ailab_icon_exp from '../../images/icon/ailab_icon_exp.svg'
-import histor_icon from '../../images/icon/icon_history.svg'
+import history_icon from '../../images/icon/icon_history.svg'
 import pyfile_icon from '../../images/icon/pyfile.svg'
 import shfile_icon from '../../images/icon/shfile.svg'
 import ipynb_icon from '../../images/icon/ipynb.svg'
@@ -34,7 +34,7 @@ export namespace labIcon {
         name: 'hfext:logo_pyfile',
         svgstr: pyfile_icon
     })
-    export const shfileIcon = new HFLabIcon({
+    export const shFileIcon = new HFLabIcon({
         name: 'hfext:logo_shfile',
         svgstr: shfile_icon
     })
@@ -44,7 +44,7 @@ export namespace labIcon {
     })
     export const historyIcon = new HFLabIcon({
         name: 'hfext:icon_history',
-        svgstr: histor_icon
+        svgstr: history_icon
     })
     export const experimentIcon = new HFLabIcon({
         name: 'hfext:icon_experiment',

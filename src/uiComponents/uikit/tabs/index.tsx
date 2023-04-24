@@ -25,7 +25,7 @@ export const Tabs = (props: {
             {props.items.map(item => (
                 <li
                     data-tab={item}
-                    className={item == selected ? 'selected ptr' : 'ptr'}
+                    className={item === selected ? 'selected ptr' : 'ptr'}
                 >
                     {item}
                 </li>

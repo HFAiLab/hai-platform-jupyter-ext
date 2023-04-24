@@ -1,11 +1,3 @@
-import os
-import sys
-
-if os.environ.get('DEBUG', '0') == '1':
-    import hf_env
-    hf_env.set_env('latest')
-    sys.path = [os.environ['SERVER_PATH']] + sys.path
-
 import json
 import os.path as osp
 

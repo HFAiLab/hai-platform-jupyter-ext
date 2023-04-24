@@ -291,9 +291,6 @@ export const RenewManagerRender = (props: { theme: string | null }) => {
                 >
                     {getTinyDisplay()}
                 </Button>
-                {/* <div className="renew-container" style={{color: getTextColor()}}>
-                {getShortDisplay()} <Button outlined onClick={changeShowDesc} className="renew-btn" small intent={getIntent()} >{i18n.t(i18nKeys.biz_renew)}</Button>
-            </div> */}
             </Popover2>
             <Dialog
                 isOpen={showDesc}

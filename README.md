@@ -26,10 +26,11 @@ HAI Platform 的 jupyter 插件
     ```csv
     /path/to/jupyterlab_hai_platform_ext,/jupyter_ext/server/jupyterlab_hai_platform_ext,{public},"",Directory,true,add,true
     /path/to/jupyterlab_hai_platform_ext/labextension,/jupyter_ext/client/jupyterlab_hai_platform_ext,{public},"",Directory,true,add,true
-    /path/to/jupyterlab_hai_platform_ext/jupyter-config/jupyterlab_hai_platform_ext.json,/usr/local/etc/jupyter_server_config.d/jupyterlab_hai_platform_ext.json,{public},"",File,true,add,true
+    /path/to/jupyterlab_hai_platform_ext/jupyter-config/jupyterlab_hai_platform_ext.json,/usr/local/etc/jupyter/jupyter_server_config.d/jupyterlab_hai_platform_ext.json,{public},"",File,true,add,true
     ```
 
 3. 在 `train_environment` 数据表中添加对应的环境变量，这部分和下文直接安装的环境变量相同。
+4. 初次使用时，请检查在 `Settings -> Advanced Setting Editor -> HF AiLab Token` 是否已经设置了正确的 Token。
 
 ### **直接安装**
 
@@ -43,18 +44,16 @@ pip install jupyterlab_hai_platform_ext
 
 在启动的时候，请确保已经设置了以下几个环境变量：
 
-```markdown
-* BFF_URL: [ailab-server](https://github.com/HFAiLab/hai-platform-studio) 接入层短链接地址
-* WS_URL: [ailab-server](https://github.com/HFAiLab/hai-platform-studio) 接入层长链接地址
-* CLUSTER_SERVER_URL: [HAI Platform](https://github.com/HFAiLab/hai-platform) 集群 api 地址
-```
+* **BFF_URL**: [ailab-server](https://github.com/HFAiLab/hai-platform-studio) 接入层短链接地址
+* **WS_URL**: [ailab-server](https://github.com/HFAiLab/hai-platform-studio) 接入层长链接地址
+* **CLUSTER_SERVER_URL**: [HAI Platform](https://github.com/HFAiLab/hai-platform) 集群 api 地址
+
 
 另外，我们提供一些可选的环境变量配置：
 
-```markdown
-* JUPYTER_COUNTLY_URL: 如果需要开启 [Countly](https://countly.com/) 监控，请配置该字段
-* JUPYTER_COUNTLY_API_KEY: 如果需要开启 [Countly](https://countly.com/) 监控，请配置该字段
-```
+
+* **JUPYTER_COUNTLY_URL**: 如果需要开启 [Countly](https://countly.com/) 监控，请配置该字段
+* **JUPYTER_COUNTLY_API_KEY**: 如果需要开启 [Countly](https://countly.com/) 监控，请配置该字段
 
 ## 本地调试
 
