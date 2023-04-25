@@ -55,7 +55,7 @@ class IOTipWidget extends ReactWidget {
 }
 
 export class IoConnectionTip {
-    ioStatus: IoStatus = IoStatus.fataled
+    ioStatus: IoStatus = IoStatus.fatal
     ioLastError: AllFatalErrorsType | null = null
     constructor(app: JupyterFrontEnd) {
         this._app = app

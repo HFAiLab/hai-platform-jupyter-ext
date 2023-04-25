@@ -14,7 +14,7 @@ const getIOStatusText = (status: IoStatus, error: AllFatalErrorsType | null) => 
   if (status === IoStatus.connected) {
     return i18n.t(i18nKeys.io_tip_connected_title)
   }
-  if (status === IoStatus.fataled) {
+  if (status === IoStatus.fatal) {
     if (
       error &&
       (error as unknown as string) === (UserFatalError.userManuallyDisconnect as string)
@@ -52,7 +52,7 @@ export const IOStatusTag = (props: {
   }
 
   const isConnected = props.ioStatus === IoStatus.connected
-  const isFatal = props.ioStatus === IoStatus.fataled
+  const isFatal = props.ioStatus === IoStatus.fatal
 
   return (
     <>

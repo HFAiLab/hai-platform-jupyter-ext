@@ -6,7 +6,7 @@ import { JupyterFrontEnd } from '@jupyterlab/application'
 import React, { MouseEvent, useEffect, useState } from 'react'
 import { ReactWidget } from '@jupyterlab/apputils'
 import { Context } from '@/contextManager'
-import { VERSION, OpenCommands, docURL } from '../../../consts'
+import { VERSION, OpenCommands, jupyterGetDocURL } from '../../../consts'
 import { icons, SVGWrapper } from '../../../uiComponents'
 import { getToken, ErrorStatus, getGlobalErrorHandler } from '../../../utils'
 import HFLogger from '@hai-platform/logger'
@@ -128,7 +128,7 @@ const NavPanelComponent = (props: { context: Context }): JSX.Element => {
             <div className="documentation">
                 {props.context._user.in && (
                     <>
-                        <a href={docURL} target="_blank">
+                        <a href={jupyterGetDocURL()} target="_blank">
                             {i18n.t(i18nKeys.biz_user_guide)}
                         </a>
                         <span> | </span>

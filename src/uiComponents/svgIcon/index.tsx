@@ -2,7 +2,6 @@ import React, { ReactElement, useState } from 'react'
 import { SVGWrapper } from '..'
 
 // import ReactTooltip from 'react-tooltip'
-import { Chain } from '@hai-platform/studio-pages/lib/index'
 import uniqueId from 'lodash/uniqueId'
 import { priorityToName } from '@hai-platform/shared'
 import icon_down from '../../../images/down.svg'
@@ -44,12 +43,6 @@ import iconP30 from '../../../images/icon/priority/30.svg'
 import iconP40 from '../../../images/icon/priority/40.svg'
 import iconP50 from '../../../images/icon/priority/50.svg'
 
-// Status icons
-import icon_st_running from '../../../images/icon/status/running.svg'
-import icon_st_not_all_running from '../../../images/icon/status/running_strok.svg'
-import icon_st_stop from '../../../images/icon/status/stop.svg'
-import icon_st_suspended from '../../../images/icon/status/suspended.svg'
-import icon_st_waiting_init from '../../../images/icon/status/waiting_init.svg'
 import { Tooltip2 } from '@hai-ui/popover2/lib/esm'
 
 export namespace icons {
@@ -147,15 +140,6 @@ export const InlineIcon = (props: {
                     svg={props.iconObj ?? icons[props.name!]}
                 />
             )}
-
-            {/* {props.tooltip && <ReactTooltip
-            border
-            borderColor='var(--jp-layout-color3)'
-            textColor='var(--hf-text-normal)'
-            backgroundColor='var(--jp-layout-color1)'
-            id={id}
-            place={props.tooltipPlace}
-            effect='solid' children={elTooltip ? props.tooltip : undefined} />} */}
         </span>
     )
 }
@@ -200,105 +184,5 @@ export const PriorityIcon = (props: {
                 svg={PRIORITY_ICON[pName as PRIORITY_KEYS] ?? icon_help}
             ></SVGWrapper>
         </span>
-    )
-}
-
-/*Status */
-const colorMap = {
-    waiting_init: 'var(--hf-status-suspended)',
-    running: 'var(--hf-status-running)',
-    stopped: 'var(--hf-status-stopped)',
-    succeed: 'var(--hf-status-succeed)',
-    suspended: 'var(--hf-status-suspended)',
-    error: 'var(--hf-status-error)'
-} as { [status: string]: string }
-
-export const StatusIcon = (props: {
-    chain: Chain
-    style?: React.HTMLAttributes<HTMLElement>['style']
-}): JSX.Element => {
-    const { chain, style } = props
-    //@ts-ignore TODO: remove this file
-    const workerStatus = chain.workerStatus
-    const chainStatus = chain.chain_status
-
-    let tooltip = null
-    let fill = null
-    let icon = null
-
-    if (chainStatus === 'waiting_init') {
-        fill = 'waiting_init'
-        tooltip = 'ChainStatus: waiting_init'
-        icon = icon_st_waiting_init
-    }
-    if (chainStatus === 'suspended') {
-        fill = 'suspended'
-        tooltip = 'ChainStatus: suspended'
-        icon = icon_st_suspended
-    }
-    if (chainStatus === 'running') {
-        fill = 'running'
-        if (workerStatus === 'running') {
-            tooltip = 'ChainStatus: running'
-            icon = icon_st_running
-        } else {
-            tooltip = 'ChainStatus: running, workerStatus: ' + workerStatus
-            icon = icon_st_not_all_running
-        }
-    }
-    if (chainStatus === 'finished') {
-        icon = icon_st_stop
-        tooltip = 'ChainStatus: finished, workerStatus: ' + workerStatus
-
-        if (workerStatus === 'succeeded') {
-            fill = 'succeed'
-        } else if (workerStatus === 'failed') {
-            icon = icon_error
-            fill = 'error'
-        } else {
-            fill = 'stopped'
-        }
-    }
-
-    // @ts-ignore
-    const color = colorMap[fill] as string
-
-    return (
-        <InlineIcon
-            style={style}
-            name={null}
-            tooltip={tooltip || ''}
-            iconObj={icon!}
-            fill={color}
-            tooltipPlace={'right'}
-        />
-    )
-}
-
-/* Switcher */
-export const SwitcherIcon = (props: {
-    handler: (x?: any) => void
-    controller: boolean
-    name: TIcon
-    onFill?: string
-    offFill?: string
-    onBg?: string
-    offBg?: string
-    tooltip?: string
-    style?: React.HTMLAttributes<HTMLElement>['style']
-    zoom?: number
-}): JSX.Element => {
-    const scale = `scale(${props.zoom},${props.zoom})`
-    return (
-        <button
-            style={{
-                transform: props.zoom ? scale : undefined,
-                ...(props.style ?? {})
-            }}
-            onClick={props.handler}
-            className={`hf-switcher small ${props.controller ? 'active' : ''}`}
-        >
-            <InlineIcon name={props.name} tooltip={props.tooltip} />
-        </button>
     )
 }

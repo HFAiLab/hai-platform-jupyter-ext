@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@hai-platform/sass-inline-svg": "2.0.0",
-    "@hai-platform/studio-pages": "0.19.0-alpha.1681979214.3af68b94",
+    "@hai-platform/studio-pages": "0.19.0-alpha.1682329905.32209c5e",
     "@jupyterlab/application": "^3.2.0",
     "@jupyterlab/apputils": "^3.2.0",
     "@jupyterlab/console": "^3.2.0",

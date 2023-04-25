@@ -79,7 +79,7 @@ class Experiment2Container implements Experiment2ContainerAPI {
                     // @ts-ignore
                     chain: params.chain!,
                     // @ts-ignore
-                    createrQueryType: params.createrQueryType!
+                    creatorQueryType: params.creatorQueryType!
                 }
             ) as any
         } else if (key === ServiceNames.maybeCreatedWithJupyter) {
@@ -275,7 +275,7 @@ export class ExperimentPanelHFAppWidgetV2 extends ReactWidget {
             ) {
                 const perfInstance = (changed.widget as any)
                     ._content as PerformanceChartWidget
-                const queryType: IQueryType = perfInstance.createrQueryType
+                const queryType: IQueryType = perfInstance.creatorQueryType
                 if (queryType === 'path') {
                     nextExp2StateProps = {
                         queryType,

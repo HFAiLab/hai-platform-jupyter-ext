@@ -40,7 +40,7 @@ export class HFPerformanceChart extends WidgetComponentBase<
         defaultType: PerfQueryType,
         continuous: boolean,
         dup: boolean,
-        createrQueryType: IQueryType,
+        creatorQueryType: IQueryType,
         dataInterval: PerfDataInterval
     ) {
         const w = new MainAreaWidget({
@@ -51,13 +51,13 @@ export class HFPerformanceChart extends WidgetComponentBase<
                 defaultRank,
                 defaultType,
                 continuous,
-                createrQueryType,
+                creatorQueryType,
                 dataInterval
             )
         })
         // w.title.label = 'Perf - ' + chain.showName
         w.title.label = `${i18n.t(i18nKeys.biz_exp_perf)} ${
-            createrQueryType === 'chainId' ? '|' : '-'
+            creatorQueryType === 'chainId' ? '|' : '-'
         } ${chain.showName}`
         w.title.icon = this._widgetIcon
         w.title.caption = w.title.label
@@ -84,8 +84,8 @@ export class HFPerformanceChart extends WidgetComponentBase<
                 const type = args.type as PerfQueryType
                 const continuous = args.continuous as boolean
                 const dup = args.duplicate as boolean
-                const createrQueryType =
-                    (args.createrQueryType as IQueryType) || 'chainId'
+                const creatorQueryType =
+                    (args.creatorQueryType as IQueryType) || 'chainId'
                 const dataInterval = args.dataInterval as PerfDataInterval
                 this.openNewWindow(
                     chain,
@@ -93,7 +93,7 @@ export class HFPerformanceChart extends WidgetComponentBase<
                     type,
                     continuous,
                     dup,
-                    createrQueryType,
+                    creatorQueryType,
                     dataInterval
                 )
             }

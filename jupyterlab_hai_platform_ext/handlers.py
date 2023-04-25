@@ -36,7 +36,7 @@ except ImportError as e:
         '\n\n\n=====================[HFAI_EXT ImportError] import error:=====================', e)
     raise
 
-CLUSTER = os.environ.get('JUPYTER_LAB_CLUSTER', 'jd')
+CLUSTER = os.environ.get('JUPYTER_LAB_CLUSTER', 'default')
 SCP_TARGET_HOST = None
 
 # hint: 如果要自己定义请求地址，设置这几个环境变量：
@@ -58,9 +58,6 @@ set_watchdog_time(CURRENT_WATCHDOG_TIME)
 
 # 存储 ssh 配置，只需成功获取一次之后就不用再向 server 请求
 SSH_CONFIG = None
-
-BFF_URL = 'https://bff.yinghuo.high-flyer.cn'
-
 
 def get_init_info_chain_id(chain_id):
     return f'init_info:{chain_id}'
@@ -158,11 +155,15 @@ def response_formatter(status_code: int, success: int, msg: str, output_data=Non
     }
 
 
-async def post_formatter(post_handler: APIHandler):
+async def post_formatter(post_handler: APIHandler, ignore_token=False):
     try:
         token = post_handler.request.headers['token']
+        if token == 'null' or token == 'undefined':
+            if ignore_token:
+                token = 'no_need_token'
+            else:
+                token = None
         assert token, 'header中没有user token'
-        # TODO: 目前这里的 token 如果前端传递的是 null，会识别成字符串，导致判断不准确，后续这里需要优化
         try:
             action = post_handler.request.query_arguments['action'][0].decode(
                 encoding='utf-8')
@@ -457,14 +458,6 @@ class UserHandler(APIHandler):
         resp = await get_user_personal_storage(token=kwargs['token'])
         return response_formatter(200, 1, 'success', resp)
 
-    # TODO: to be delete
-    @staticmethod
-    async def get_message(input_data, **kwargs):
-        """get message"""
-        # hint:实际上新版本已经不会再请求这里了，这里的主要作用还是对旧页面的一个兼容，减少直达 server 的请求
-        r = requests.post(f'{BFF_URL}/trainings/user/cluster_message', headers={"token": kwargs['token']})
-        messages = r.json()['data']['messages']
-        return response_formatter(200, 1, 'success', messages)
 
     @staticmethod
     async def get_user_role(input_data, **kwargs):
@@ -506,7 +499,9 @@ class JupyterHandler(APIHandler):
                 'get_ssh_info': self.get_ssh_info,
                 'swap_memory': self.swap_memory,
                 'get_memory_metrics': self.get_memory_metrics,
+                # // OPENSOURCE_DELETE_BEGIN
                 'auto_clear_workspaces': self.auto_clear_workspaces,
+                # // OPENSOURCE_DELETE_END
                 'get_watchdog_info': self.get_watchdog_info,
                 'renew_watchdog_time': self.renew_watchdog_time,
             }
@@ -571,6 +566,7 @@ class JupyterHandler(APIHandler):
         }
         return response_formatter(200, 1, 'success', res)
 
+    # // OPENSOURCE_DELETE_BEGIN
     @staticmethod
     async def auto_clear_workspaces(input_data, **kwargs):
         expired_duration = 60 * 60 * 24 * 14  # 过期时间，超过 14 天没有被访问即删除
@@ -600,6 +596,7 @@ class JupyterHandler(APIHandler):
             'delete_files': delete_files
         }
         return response_formatter(200, 1, 'success', res)
+    # // OPENSOURCE_DELETE_END
 
     @staticmethod
     async def get_watchdog_info(input_data, **kwargs):
@@ -633,10 +630,12 @@ class JupyterNoHFAuthHandler(APIHandler):
 
     @tornado.web.authenticated
     async def post(self):
-        _, action, input_data = await post_formatter(self)
+        _, action, input_data = await post_formatter(self, True)
         try:
             methods: dict = {
+                # // OPENSOURCE_DELETE_BEGIN
                 'auto_clear_workspaces': self.auto_clear_workspaces,
+                # // OPENSOURCE_DELETE_END
                 'get_cluster_config': self.get_cluster_config,
             }
             output_data = await methods[action](input_data, api_handler=self)
@@ -647,6 +646,7 @@ class JupyterNoHFAuthHandler(APIHandler):
         self.set_status(status_code)
         await self.finish(custom_json_dumps(response_data, ensure_ascii=False))
 
+    # // OPENSOURCE_DELETE_BEGIN
     @staticmethod
     async def auto_clear_workspaces(input_data, **kwargs):
         logger.info('auto_clear_workspaces[no auth]')
@@ -677,6 +677,7 @@ class JupyterNoHFAuthHandler(APIHandler):
             'delete_files': delete_files
         }
         return response_formatter(200, 1, 'success', res)
+    # // OPENSOURCE_DELETE_END
 
     @staticmethod
     async def get_cluster_config(input_data, **kwargs):

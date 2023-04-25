@@ -28,7 +28,7 @@ export const ClusterPop = (props: { update: () => void }): JSX.Element => {
         LevelLogger.info(`ClusterPop ioFatalErrorCallback: ${error}`)
         setUseIO(false)
         srvc.ctx._app.commands.execute(OpenCommands.IoConnectionTip, {
-            status: IoStatus.fataled,
+            status: IoStatus.fatal,
             ioLastError: error,
             op: 'show'
         })
@@ -46,7 +46,7 @@ export const ClusterPop = (props: { update: () => void }): JSX.Element => {
         LevelLogger.info('Cluster disConnectedCallback')
         // hint: disConnected 可能是可恢复的，但是对用户来说应该没什么区别
         srvc.ctx._app.commands.execute(OpenCommands.IoConnectionTip, {
-            status: IoStatus.fataled,
+            status: IoStatus.fatal,
             ioLastError: null,
             op: 'show'
         })

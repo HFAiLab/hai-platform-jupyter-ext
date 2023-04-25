@@ -79,7 +79,7 @@ export class PerformanceChartWidget extends Widget {
     rank: number
     type: PerfQueryType
     continuous: boolean
-    createrQueryType: IQueryType
+    creatorQueryType: IQueryType
     app: PerfApp | null = null
     _height: number | null
     _width: number | null
@@ -91,7 +91,7 @@ export class PerformanceChartWidget extends Widget {
         defaultRank: number,
         defaultType: PerfQueryType,
         continuous: boolean,
-        createrQueryType: IQueryType,
+        creatorQueryType: IQueryType,
         dataInterval: PerfDataInterval
     ) {
         super()
@@ -103,7 +103,7 @@ export class PerformanceChartWidget extends Widget {
         this.type = defaultType ?? 'gpu'
         this.dataInterval = dataInterval ?? '5min'
         this.continuous = continuous ?? true
-        this.createrQueryType = createrQueryType
+        this.creatorQueryType = creatorQueryType
         this.settingRegistry = settingRegistry
         this._ctx._themeManager.themeChanged.connect(this.onThemeChanged, this)
 
@@ -156,7 +156,7 @@ export class PerformanceChartWidget extends Widget {
             height: this._height!,
             width: this._width!,
             dataInterval: this.dataInterval,
-            createrQueryType: this.createrQueryType
+            creatorQueryType: this.creatorQueryType
         }
     }
 

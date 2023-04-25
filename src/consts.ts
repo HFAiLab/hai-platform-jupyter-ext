@@ -19,15 +19,9 @@ export const VERSION = '7.14.4'
 
 export namespace CONSTS {
     export const WORKSPACE_ROOT_STR = '<workspace_root>'
-    export const INVALID_GROUP = 'FAILED'
-    export const DEFAULT_LOG_VIEWER_HEADER_HEIGHT = 34
     export const EXTENSION_CONFIG_KEY = 'jupyterlab_hai_platform_ext:config' // 目前这里只放 token，重启 hub 的时候会被重置
     export const EXTENSION_CONFIG_SETTINGS_KEY = 'jupyterlab_hai_platform_ext:settings' // 其他 settings
-    export const CREATING_SETTINGS_KEY = '@HFAILab:CREATE_SETTINGS:'
-    export const CREATING_SETTING_DEFAULT_NAME = '##DEFAULT_FILENAME##'
     export const CLOSED_MESSAGE = '@HFAILab:CLOSED_MESSAGE'
-    export const SETTING_SHOW_NODES = '@HFAILab:SHOW_NODES'
-    export const SETTING_SHOW_LINE_TIME = '@HFAILab:SHOW_LINE_TIME'
     export const SETTING_AUTO_SHOW_LOG = '@HFAILab:AUTO_SHOW_LOG'
     export const SETTING_TRAINING_CUSTOM_COLUMNS =
         '@HFAILab:TRAINING_CUSTOM_COLUMNS'
@@ -151,7 +145,9 @@ export const DebugAilabServerPathWhiteList = [
     'trainings/data_panel/user_node_quota_info'
 ]
 
-export const docURL = getDocURL(commonGetURLProps)
+export const jupyterGetDocURL = () => {
+    return getDocURL(commonGetURLProps)
+}
 
 export const getGuides = () => {
     return [
@@ -159,12 +155,12 @@ export const getGuides = () => {
         {
             title: '集群基本介绍',
             desc: '学习如何使用幻方萤火集群',
-            URL: docURL + 'start/hfai_intro.html'
+            URL: jupyterGetDocURL() + 'start/hfai_intro.html'
         },
         {
             title: '分时调度策略',
             desc: '了解幻方萤火集群服务的分时调度策略',
-            URL: docURL + 'guide/schedule.html#'
+            URL: jupyterGetDocURL() + 'guide/schedule.html#'
         }
         // OPENSOURCE_DELETE_END
     ]

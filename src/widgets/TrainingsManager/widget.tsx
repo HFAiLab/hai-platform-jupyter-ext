@@ -199,7 +199,7 @@ export class TrainingsWidget extends ReactWidget {
         ) {
             const perfInstance = (changed.widget as any)
                 ._content as PerformanceChartWidget
-            const queryType: IQueryType = perfInstance.createrQueryType
+            const queryType: IQueryType = perfInstance.creatorQueryType
 
             if (queryType === 'chainId') {
                 nextChain = perfInstance.chain

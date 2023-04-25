@@ -86,7 +86,6 @@ export const createRequest = (defaultConfig?: AxiosRequestConfig) => {
     }
 
     if (data.success !== 1) {
-        // FIXME: 这样灵活性欠佳，这种逻辑最好暴露给调用者
         if (!ToastIgnorePaths.includes(config.url || '')) {
             AppToaster.show({
                 message: `${i18n.t(i18nKeys.biz_cluster_internal_server_error, {

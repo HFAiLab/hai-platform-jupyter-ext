@@ -8,7 +8,7 @@ import { ISettingRegistry } from '@jupyterlab/settingregistry'
 import { Signal } from '@lumino/signaling'
 import { GlobalAilabServerClient } from '@/serverConnection/ailabServer'
 import { AilabServerApiName } from '@hai-platform/client-ailab-server'
-import { convertUserQuotaInfoToQuotaMap, SingleUserInfo } from '@hai-platform/shared'
+import { convertUserQuotaInfoToQuotaMap, SingleUserInfo, isBackgroundTask } from '@hai-platform/shared'
 import type { IQuotaMap } from '@hai-platform/shared'
 import { IOFrontier } from '@hai-platform/studio-pages/lib/socket'
 import { GlobalApiServerClient } from '../serverConnection/apiServer'
@@ -185,7 +185,7 @@ export class User {
         priority_label: string
     ): { total: number; used: number } {
         // 针对 background task，最多一个
-        if (group === 'jd_dgxa100#BG' || group === 'jd_dev_alpha#BG') {
+        if(isBackgroundTask(group)){
             return {
                 total: 1,
                 used: 0

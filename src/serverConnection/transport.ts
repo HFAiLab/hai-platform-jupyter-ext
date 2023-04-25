@@ -43,7 +43,7 @@ async function _req<T>(p: {
         })
         return res
     } catch (e) {
-        JupyterCountly.getInstance()!.logError(e as any)
+        JupyterCountly.getInstance()?.logError(e as any)
         throw e
     }
 }
@@ -141,24 +141,6 @@ export namespace conn {
             }
         })
         return
-    }
-
-    export async function starExperiment(p: {
-        chain_id: string
-        star: boolean
-    }): Promise<BasicConnResponse> {
-        let res = await _req<ConnResponse<string>>({
-            endPoint: 'experiment',
-            params: {
-                action: p.star ? 'star_experiment' : 'unstar_experiment',
-                ...p
-            }
-        })
-        // TODO: 这里目前的实现没有办法真正透传出所有错误，后面需要改一下实现
-        return {
-            success: 1,
-            msg: res.output_data
-        }
     }
 
     /**

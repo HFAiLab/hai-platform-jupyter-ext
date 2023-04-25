@@ -5,6 +5,7 @@ import {
     CountlyReport
 } from '@hai-platform/studio-toolkit/lib/esm/countly'
 import { isProduction } from '../env'
+import { getCountlyAPIKey, getCountlyURL } from '@hai-platform/shared'
 
 const DebugDeviceId = 'debug-device'
 let DebugUserName = 'unknown'
@@ -74,10 +75,7 @@ export class JupyterCountly {
     }
 
     static safeReport(key: CountlyEventKey, event?: CountlyEvent) {
-        if (
-            !window.haiConfig?.countly?.apiKey ||
-            !window.haiConfig?.countly?.url
-        ) {
+        if (!getCountlyURL() || !getCountlyAPIKey()) {
             return
         }
         if (!isProduction) {
@@ -96,15 +94,12 @@ export class JupyterCountly {
     }
 
     static lazyInit() {
-        if (
-            !window.haiConfig?.countly?.apiKey ||
-            !window.haiConfig?.countly?.url
-        ) {
+        if (!getCountlyURL() || !getCountlyAPIKey()) {
             return
         }
         jupyterCountly = new CountlyReport<CountlyEventKey>({
-            apiKey: window.haiConfig.countly.apiKey,
-            countlyURL: window.haiConfig.countly.url,
+            apiKey: getCountlyAPIKey()!,
+            countlyURL: getCountlyURL()!,
             pageName: PAGE_NAME,
             version: VERSION,
             deviceId: getCurrentUserName(),
