@@ -48,6 +48,13 @@ import { getUserAgentInfo } from './utils/browser'
 import { GlobalVersionTrack } from './modules/versionTrack'
 import { ServerDebugTip } from './widgets/statusGroup/ServerDebugTip'
 import { conn } from './serverConnection'
+import { GlobalApiServerClient } from './serverConnection/apiServer'
+import { ApiServerApiName } from '@hai-platform/client-api-server'
+import {
+    clear,
+    save,
+    setNodeMeta
+} from '@hai-platform/studio-toolkit/lib/esm/utils/nodeNetworkMetaMap'
 
 export const HFAILabExtension: JupyterFrontEndPlugin<Context> = {
     id: 'jupyterlab_hai_platform_ext:Extension',
@@ -299,6 +306,20 @@ export const HFAILabExtension: JupyterFrontEndPlugin<Context> = {
                 disableAllEditors()
             }
         }
+
+        // 这个是个临时修复策略，后面建议更换直接存在内存中的方案
+        GlobalApiServerClient.request(ApiServerApiName.CLUSTER_DF, {
+            monitor: false
+        }).then(res => {
+            clear()
+            for (const node of res.cluster_df) {
+                const leaf = node.leaf ?? null
+                const spine = node.spine ?? null
+                const scheduleZone = node.schedule_zone ?? null
+                setNodeMeta(node.name, leaf, spine, scheduleZone)
+            }
+            save()
+        })
 
         // hint: 管理员登录的时候，禁用编辑能力防止误操作
         editorTracker.widgetAdded.connect(widgetAddedCallback)

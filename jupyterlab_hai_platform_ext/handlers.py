@@ -26,7 +26,7 @@ WORKSPACE_EXTENSION = '.jupyterlab-workspace'
 
 try:
     from hfai.client.api import \
-        get_user_info, create_experiment_v2, \
+        get_user_info, create_experiment, \
         Experiment, set_user_gpu_quota, create_node_port_svc, ExperimentImpl, \
         get_user_personal_storage, set_swap_memory, get_tasks_overview, get_cluster_overview, \
         set_watchdog_time
@@ -227,7 +227,7 @@ class ExperimentHandler(APIHandler):
 
     @staticmethod
     async def create_experiment(input_data, **kwargs):
-        print('create_experiment use create_experiment_v2 \n')
+        print('create_experiment use create_experiment \n')
         """create experiment"""
         token = kwargs['token']
         root_dir = kwargs['api_handler'].contents_manager.root_dir
@@ -245,6 +245,7 @@ class ExperimentHandler(APIHandler):
         watchdog_time = input_data.get('watchdog_time', 0)
         tags = input_data.get('tags', [])
         sidecar = input_data.get('sidecar', [])
+        fffs_enable_fuse = input_data.get('fffs_enable_fuse', None)
 
         logger.info(f'create_experiment: {entrypoint}')
 
@@ -268,6 +269,7 @@ class ExperimentHandler(APIHandler):
                 "mount_code": input_data.get('mount_code', 2),
                 "py_venv": py_venv, # 在运行脚本前，source 一下 python 环境
                 "sidecar": sidecar,
+                "fffs_enable_fuse": fffs_enable_fuse
             }),
         })
 
@@ -281,7 +283,7 @@ class ExperimentHandler(APIHandler):
         if whole_life_state:
             config.options.whole_life_state =whole_life_state
 
-        experiment = await create_experiment_v2(config)
+        experiment = await create_experiment(config)
         return response_formatter(200, 1, 'success', output_data=experiment)
 
     @staticmethod
@@ -427,10 +429,8 @@ class UserHandler(APIHandler):
                 raise ValueError('非法token')
             methods: dict = {
                 'set_user_gpu_quota': self.set_user_gpu_quota,
-                'get_worker_user_info': self.get_worker_user_info,
                 'get_user_role': self.get_user_role,
                 'get_storage': self.get_storage,
-                'get_message': self.get_message,
                 'get_global_tasks_overview': self.get_global_tasks_overview,
                 'get_global_cluster_overview': self.get_global_cluster_overview,
                 'get_haienv_list': self.get_haienv_list
@@ -499,9 +499,6 @@ class JupyterHandler(APIHandler):
                 'get_ssh_info': self.get_ssh_info,
                 'swap_memory': self.swap_memory,
                 'get_memory_metrics': self.get_memory_metrics,
-                # // OPENSOURCE_DELETE_BEGIN
-                'auto_clear_workspaces': self.auto_clear_workspaces,
-                # // OPENSOURCE_DELETE_END
                 'get_watchdog_info': self.get_watchdog_info,
                 'renew_watchdog_time': self.renew_watchdog_time,
             }
@@ -566,37 +563,6 @@ class JupyterHandler(APIHandler):
         }
         return response_formatter(200, 1, 'success', res)
 
-    # // OPENSOURCE_DELETE_BEGIN
-    @staticmethod
-    async def auto_clear_workspaces(input_data, **kwargs):
-        expired_duration = 60 * 60 * 24 * 14  # 过期时间，超过 14 天没有被访问即删除
-        workspaces_dir = get_workspaces_dir()
-        active_workspaces = input_data.get('active_workspaces', [])
-        now = int(time.time())
-        files = os.listdir(workspaces_dir)
-        delete_files = []
-
-        for file in files:
-            if WORKSPACE_EXTENSION not in file:
-                continue
-
-            if file in active_workspaces:
-                continue
-
-            abs_file_path = os.path.join(workspaces_dir, file)
-            # 上一次访问的时间
-            last = int(os.stat(abs_file_path).st_atime)
-            if (now - last >= expired_duration):
-                os.remove(abs_file_path)
-                delete_files.append(file)
-                print(f"{abs_file_path} was removed!, duration: {now - last}")
-
-        res = {
-            'success': True,
-            'delete_files': delete_files
-        }
-        return response_formatter(200, 1, 'success', res)
-    # // OPENSOURCE_DELETE_END
 
     @staticmethod
     async def get_watchdog_info(input_data, **kwargs):
@@ -633,9 +599,6 @@ class JupyterNoHFAuthHandler(APIHandler):
         _, action, input_data = await post_formatter(self, True)
         try:
             methods: dict = {
-                # // OPENSOURCE_DELETE_BEGIN
-                'auto_clear_workspaces': self.auto_clear_workspaces,
-                # // OPENSOURCE_DELETE_END
                 'get_cluster_config': self.get_cluster_config,
             }
             output_data = await methods[action](input_data, api_handler=self)
@@ -646,38 +609,6 @@ class JupyterNoHFAuthHandler(APIHandler):
         self.set_status(status_code)
         await self.finish(custom_json_dumps(response_data, ensure_ascii=False))
 
-    # // OPENSOURCE_DELETE_BEGIN
-    @staticmethod
-    async def auto_clear_workspaces(input_data, **kwargs):
-        logger.info('auto_clear_workspaces[no auth]')
-        expired_duration = 60 * 60 * 24 * 14  # 过期时间，超过 14 天没有被访问即删除
-        workspaces_dir = get_workspaces_dir()
-        active_workspaces = input_data.get('active_workspaces', [])
-        now = int(time.time())
-        files = os.listdir(workspaces_dir)
-        delete_files = []
-
-        for file in files:
-            if WORKSPACE_EXTENSION not in file:
-                continue
-
-            if file in active_workspaces:
-                continue
-
-            abs_file_path = os.path.join(workspaces_dir, file)
-            # 上一次访问的时间
-            last = int(os.stat(abs_file_path).st_atime)
-            if (now - last >= expired_duration):
-                os.remove(abs_file_path)
-                delete_files.append(file)
-                logger.info(f"{abs_file_path} was removed!, duration: {now - last}")
-
-        res = {
-            'success': True,
-            'delete_files': delete_files
-        }
-        return response_formatter(200, 1, 'success', res)
-    # // OPENSOURCE_DELETE_END
 
     @staticmethod
     async def get_cluster_config(input_data, **kwargs):

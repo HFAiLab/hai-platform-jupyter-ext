@@ -229,23 +229,23 @@
   resolved "https://registry.yarnpkg.com/@gilbarbara/deep-equal/-/deep-equal-0.1.2.tgz#1a106721368dba5e7e9fb7e9a3a6f9efbd8df36d"
   integrity sha512-jk+qzItoEb0D0xSSmrKDDzf9sheQj/BAPxlgNxgmOaA3mxpUa6ndJLYGZKsJnIVEQSD8zcTbyILz7I0HcnBCRA==
 
-"@hai-platform/client-ailab-server@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/client-ailab-server/-/client-ailab-server-0.19.0-alpha.1682329905.32209c5e.tgz#5d7fa45916a5f0b6653cd34110d9690d3e6be9a6"
-  integrity sha512-59vkdRzDnZztGQUbz4VHFU1dMrd9v+KYDLtAAfAA62dNrJr9dE9lhh8HQzqrD8U7n7JUk2YD3OsFC3tiY++ezA==
+"@hai-platform/client-ailab-server@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/client-ailab-server/-/client-ailab-server-0.19.0-alpha.1682505883.c59ad262.tgz#0f94db9126c22fb2c9f1e28c29012885bb34c63f"
+  integrity sha512-MQzfWDz3+Rf8/HV2dYPOZsOH/R4UmE6gBwVJ0ZuGIGTIFKU3X86GAuhXoPsXrr9plR4cxk1udSoqAoDvNzL8LA==
   dependencies:
     "@hai-platform/request-client" "0.74.0"
-    "@hai-platform/shared" "0.19.0-alpha.1682329905.32209c5e"
+    "@hai-platform/shared" "0.19.0-alpha.1682505883.c59ad262"
     axios "^0.27.2"
     utility-types "^3.10.0"
 
-"@hai-platform/client-api-server@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/client-api-server/-/client-api-server-0.19.0-alpha.1682329905.32209c5e.tgz#85e990311f5bd9b70102c22fc11c47bc451f8d9a"
-  integrity sha512-ZQM4wVe0vn0aquSm6ABO4uU/a8auiL9L90LFL5VzXt4ujGiLjpoiQ2K78s9TUbgHqQrdETzL3ZklmT5AjkOUmw==
+"@hai-platform/client-api-server@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/client-api-server/-/client-api-server-0.19.0-alpha.1682505883.c59ad262.tgz#1f6aa3da103a14a4e37e7f038a4f407c326a713c"
+  integrity sha512-E+O9OxAglxKLmAPL5OCKV7kv/dA91u6MwMIiKfUSjfSVmcWnPvzAq31cWKldOOd6GmPoCY7L+sEmxyekJRF9wg==
   dependencies:
     "@hai-platform/request-client" "0.74.0"
-    "@hai-platform/shared" "0.19.0-alpha.1682329905.32209c5e"
+    "@hai-platform/shared" "0.19.0-alpha.1682505883.c59ad262"
     axios "^0.27.2"
     query-string "^7.1.1"
 
@@ -254,20 +254,20 @@
   resolved "https://registry.yarnpkg.com/@hai-platform/countly-sdk-web/-/countly-sdk-web-20.11.3-beta5.tgz#cc985bb7c4fe414625f3b9fa3017e29d5ef218f1"
   integrity sha512-tpFfdjJdkMJy+7FfPHWx3N2BbnW2D0Gpej8sa90upx6sEz7rk8ETARqhZo+Ma2ZMsYx4/PPuIOt77bTc6n+YCg==
 
-"@hai-platform/i18n@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/i18n/-/i18n-0.19.0-alpha.1682329905.32209c5e.tgz#f437b52f9f3af3fd2bb2a8dc4e2f205c46716399"
-  integrity sha512-Fsv05eZPrJ6oWa5/uce3Bcw97mzx+j8qRUVLch20LK1fMkHRIPzCkS4lRbjMj/MFpgzJmmL4ahqvmJZ9/Fbu6g==
+"@hai-platform/i18n@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/i18n/-/i18n-0.19.0-alpha.1682505883.c59ad262.tgz#42b90f4aa2315287c018aa2fec7eea6c82a12148"
+  integrity sha512-UoaMICN52a7sZDcuzMMcNG5829nTmwVibsqGnbCdwQZhOmbFxmICMrgKxgxbnWGWuJIn9oatAVEjdCXNN160pw==
 
-"@hai-platform/icons@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/icons/-/icons-0.19.0-alpha.1682329905.32209c5e.tgz#5370402ed8604bc1a9b6d0775a271a81efd27a2f"
-  integrity sha512-xVX1/aA9NwMWnX0p/NIGkBNEL6uIgLW9FX5jgOn3nlcVMDHPBysSbZZpq8eKPngmJdcJ6CNu1tvpCuU4iE8gNQ==
+"@hai-platform/icons@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/icons/-/icons-0.19.0-alpha.1682505883.c59ad262.tgz#3a96b7816d3c62b5f7612fcc47acb479128f2b9e"
+  integrity sha512-EBtGe0TATJzDZ0LgFE7gtiyU72Y245WUvRwbQYaq/uHuyHe/yybgtoJD2UzOkFQtWgdimEuaHfhgAm5m0oifAw==
 
-"@hai-platform/io-frontier@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/io-frontier/-/io-frontier-0.19.0-alpha.1682329905.32209c5e.tgz#094fa67845e4530fab0fb30c999da866487d368a"
-  integrity sha512-irTaJjBwvBbFKkU31NtweBZ5Ca84BhfVgea1mWfC/OBya6RvQCq71DoZ5NRYtkDKZhb+iJWFPFsa6fHRwgEPxw==
+"@hai-platform/io-frontier@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/io-frontier/-/io-frontier-0.19.0-alpha.1682505883.c59ad262.tgz#183c149c21c9c615f40ab132e231468af7d8bad7"
+  integrity sha512-X9ZfHz9yyb9wPNiBeHuYyze8XnnCrizFsEe5Hx7BAnrOOUB8uRDhCXu5WAjfGYxoGHqC3X1amAOqxsxunL2rgg==
   dependencies:
     fst-stable-stringify "^1.0.3"
     glob "^7.2.0"
@@ -305,28 +305,28 @@
     object-assign "^4.1.1"
     svgo "^1.3.2"
 
-"@hai-platform/shared@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/shared/-/shared-0.19.0-alpha.1682329905.32209c5e.tgz#312085852ac55930a0ef4328d02515725158b75a"
-  integrity sha512-3duVh8zAZwO9rIqN0gltOwEnBpa3p6WAZI1CTxrbSfdh2F5Y3bqhFrAklxs15uxXjCKTcL9pckducSMD8LYiuA==
+"@hai-platform/shared@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/shared/-/shared-0.19.0-alpha.1682505883.c59ad262.tgz#ee3c755a870e14ef0c77b6a423983d13529363c8"
+  integrity sha512-PvjS+UW0ypaVAsNmRfKQAbSxAqCDMLH4bTmREfL3X+J6mAD7szqWEeaGnl89tjTGraWpu8KZfbO+2z+UcEqmbg==
   dependencies:
     axios "^0.27.2"
 
-"@hai-platform/studio-pages@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/studio-pages/-/studio-pages-0.19.0-alpha.1682329905.32209c5e.tgz#c1c3345918d862c01e551675e36727018ca3d4e8"
-  integrity sha512-G2fXh0N8wUh2eTM8s/HGEN0NFbOFxbk/39ackfDajnHfv97HujMxHYSZUL46gvKsZTriYpX8oMWQWRPYy5p78w==
+"@hai-platform/studio-pages@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/studio-pages/-/studio-pages-0.19.0-alpha.1682505883.c59ad262.tgz#52ea04801ede8c88e1da327054a2bbedba2448c0"
+  integrity sha512-/3tGxZowHCSlWnlC0IyhCSwCBCwFKd9fQvgH40MryQjCe2MJNgYBXlkujLXlPvQ6X/uEKIyvHW2qhmoNp7t9nA==
   dependencies:
-    "@hai-platform/client-ailab-server" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/client-api-server" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/i18n" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/icons" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/io-frontier" "0.19.0-alpha.1682329905.32209c5e"
+    "@hai-platform/client-ailab-server" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/client-api-server" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/i18n" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/icons" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/io-frontier" "0.19.0-alpha.1682505883.c59ad262"
     "@hai-platform/logger" "^0.3.3"
-    "@hai-platform/shared" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/studio-schemas" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/studio-toolkit" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/x-editor" "0.19.0-alpha.1682329905.32209c5e"
+    "@hai-platform/shared" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/studio-schemas" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/studio-toolkit" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/x-editor" "0.19.0-alpha.1682505883.c59ad262"
     "@hai-ui/core" "4.16.5-alpha.5"
     "@hai-ui/datetime" "4.4.20-alpha.5"
     "@hai-ui/popover2" "1.13.5-alpha.5"
@@ -354,25 +354,25 @@
     use-groot "1.1.2"
     viewerjs "^1.11.2"
 
-"@hai-platform/studio-schemas@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/studio-schemas/-/studio-schemas-0.19.0-alpha.1682329905.32209c5e.tgz#f099b1be2f5091ca3cc2ef1b103b139701b8c014"
-  integrity sha512-P4ftFSp0x9yrUUcy/vJGgqQ9iaEp/iKfcTBTpJRjaF8X2/0jyZAqqMT6fvJ/1oqgxAwAGQXfmx+BVeQBojq8FQ==
+"@hai-platform/studio-schemas@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/studio-schemas/-/studio-schemas-0.19.0-alpha.1682505883.c59ad262.tgz#b8ff111fc4ced48486eb316b93b2aa0cdcdd7b6a"
+  integrity sha512-HFIvWWkeozqgyrfKaioF9AQqdnWhLJEIwZDgltSeS/pQmCHud1RyHLQhA+hy9/w9ZsfZ6maZmmquuhYhaTxeng==
   dependencies:
-    "@hai-platform/client-ailab-server" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/client-api-server" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/shared" "0.19.0-alpha.1682329905.32209c5e"
+    "@hai-platform/client-ailab-server" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/client-api-server" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/shared" "0.19.0-alpha.1682505883.c59ad262"
     fast-json-stringify "^3"
 
-"@hai-platform/studio-toolkit@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/studio-toolkit/-/studio-toolkit-0.19.0-alpha.1682329905.32209c5e.tgz#015a54141e1fd40bf382dd78967cca8f05918a95"
-  integrity sha512-qWmPINLZIySuJyG4DUY6FxoB2RnUBJVFsjyYoj8q2AVdvioWmv0+OQT3DvxT8W0hTWzp5XfGmv3cLRYN4+hYXg==
+"@hai-platform/studio-toolkit@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/studio-toolkit/-/studio-toolkit-0.19.0-alpha.1682505883.c59ad262.tgz#7b403ca0c3eeae4bfdd29a32f3d8462eaf8ab6f7"
+  integrity sha512-/XlZrTnLAcV0VDw/VBK2ijnw19tw3XlIKjc5++UF9ktra5KAaYHUDXLVOj5eXPsq9mOPB+XV/nUXge6ZxsWcJw==
   dependencies:
     "@hai-platform/countly-sdk-web" "20.11.3-beta5"
     "@hai-platform/logger" "^0.3.3"
-    "@hai-platform/shared" "0.19.0-alpha.1682329905.32209c5e"
-    "@hai-platform/studio-schemas" "0.19.0-alpha.1682329905.32209c5e"
+    "@hai-platform/shared" "0.19.0-alpha.1682505883.c59ad262"
+    "@hai-platform/studio-schemas" "0.19.0-alpha.1682505883.c59ad262"
     dayjs "^1.10.7"
     uuid "^9.0.0"
 
@@ -383,10 +383,10 @@
   dependencies:
     diff-match-patch "^1.0.5"
 
-"@hai-platform/x-editor@0.19.0-alpha.1682329905.32209c5e":
-  version "0.19.0-alpha.1682329905.32209c5e"
-  resolved "https://registry.yarnpkg.com/@hai-platform/x-editor/-/x-editor-0.19.0-alpha.1682329905.32209c5e.tgz#0df331f6b0d68f31dfabc0e46989e7f31f2d1abe"
-  integrity sha512-zE3JczcIlZJo1BmIVqMU50fskgf5e7JXzhOqzhfBrjxOTC9qCIqZfzzdsYVCiOcXbqcOY2ZA4Ow1EXCeuCMzkg==
+"@hai-platform/x-editor@0.19.0-alpha.1682505883.c59ad262":
+  version "0.19.0-alpha.1682505883.c59ad262"
+  resolved "https://registry.yarnpkg.com/@hai-platform/x-editor/-/x-editor-0.19.0-alpha.1682505883.c59ad262.tgz#e7af9a9ac2eab5403883e1db629bc472ea97b8cf"
+  integrity sha512-mBETsRoMuoyvI6U5c/D5d8KoJ1hCiwodJJ6hNycOn4Vsf/bo8LMRkJK901zeFbv9zDSRxOAPFggR+3jZJtebkA==
   dependencies:
     "@hai-platform/vditor" "3.8.17-beta.2"
 

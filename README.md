@@ -74,6 +74,6 @@ jlpm run build
 
 ## License
 
-Distributed under the GPL License. See `LICENSE.txt` for more information.
+Distributed under the GPL License. See [LICENSE](./LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

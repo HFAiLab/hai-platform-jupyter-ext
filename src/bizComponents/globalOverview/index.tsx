@@ -1,12 +1,12 @@
 import { conn } from '@/serverConnection'
 import React, { useState } from 'react'
 import { ArtColumn } from 'ali-react-table'
-import { SUBMIT_PRIORITY_LIST } from '@hai-platform/studio-pages/lib/model/TaskCreateSettings'
 import { RefreshBtn } from '@/uiComponents/refresh'
 import { PriorityIcon } from '../../uiComponents'
 import { InWrapper } from '@/uiComponents/common'
 import { Button } from '@hai-ui/core'
 import { i18n, i18nKeys } from '@hai-platform/i18n'
+import { TaskPriority, taskPriorityNameMap } from '@hai-platform/shared'
 import { HFTable } from '@/uiComponents/HFTable'
 import {
     AllFatalErrorsType,
@@ -283,14 +283,22 @@ export const GlobalOverviewUI = (props: {
         }
     ] as Array<ArtColumn>
 
-    const dataSource = SUBMIT_PRIORITY_LIST.map(item => {
-        const data = ((taskOverview ? taskOverview[item.value] : {}) ||
-            {}) as ColumnDataType
-        const showName = item.name === 'AUTO' ? 'External' : item.name
-        data['priority'] = { name: showName, value: item.value }
-        data['scheduled'] = data['scheduled'] || 0
-        data['queued'] = data['queued'] || 0
-        return data
+    const dataSource = Object.keys(taskPriorityNameMap || [])
+    .sort((a, b) => {
+      return Number(b) - Number(a)
+    })
+    .map((priorityKey) => {
+      const priorityValue = Number(priorityKey)
+      const priorityName = taskPriorityNameMap[priorityKey as unknown as TaskPriority]
+      const info = (taskOverview || {})[priorityValue] || { scheduled: 0, queued: 0 }
+      return {
+        priority: {
+          name: priorityName,
+          value: priorityValue,
+        },
+        scheduled: info.scheduled,
+        queued: info.queued,
+      }
     })
 
     const calculateCurrentCount = () => {
@@ -387,7 +395,7 @@ export const GlobalOverviewUI = (props: {
 
             {!ignoreTaskOverview && (
                 <h4 className="global-view-title">
-                    {i18n.t(i18nKeys.biz_info_cluster_tasks)}
+                    GPU {i18n.t(i18nKeys.biz_info_cluster_tasks)}
                 </h4>
             )}
 

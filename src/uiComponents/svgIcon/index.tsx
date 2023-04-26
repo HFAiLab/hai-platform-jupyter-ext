@@ -37,6 +37,7 @@ import icon_hour_glass from '../../../images/icon/hour_glass.svg'
 // Priority icons
 import iconPAuto from '../../../images/icon/priority/auto.svg'
 import iconP0 from '../../../images/icon/priority/0.svg'
+import iconP5 from '../../../images/icon/priority/5.svg'
 import iconP10 from '../../../images/icon/priority/10.svg'
 import iconP20 from '../../../images/icon/priority/20.svg'
 import iconP30 from '../../../images/icon/priority/30.svg'
@@ -147,6 +148,7 @@ export const InlineIcon = (props: {
 const PRIORITY_ICON = {
     AUTO: iconPAuto,
     LOW: iconP0,
+    BELOW_NORMAL: iconP5,
     NORMAL: iconP10,
     ABOVE_NORMAL: iconP20,
     HIGH: iconP30,

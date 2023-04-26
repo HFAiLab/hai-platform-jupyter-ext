@@ -12,7 +12,8 @@ import { ArtColumn } from 'ali-react-table'
 import { Tooltip2 } from '@hai-ui/popover2'
 import {
     TASK_PRIORITY_NAMES_STANDARD,
-    TaskPriorityNameStandard
+    TaskPriorityNameStandard,
+    getDefaultTrainingGroup
 } from '@hai-platform/shared'
 
 type T_PriorityQuota = {
@@ -161,11 +162,16 @@ export const Quota = (): JSX.Element => {
         })
     }
 
-    const firstKey = Object.keys(user.quotaMap)[0]
-    const [activeKey, setActiveKey] = useState(firstKey)
-
-    if (firstKey && !activeKey) {
-        setActiveKey(firstKey)
+    const [activeKey, setActiveKey] = useState<string | undefined>(undefined)
+    const quotaMapKeys = Object.keys(user.quotaMap)
+    
+    if (quotaMapKeys.length && !activeKey) {
+        const defaultTrainingGroup = getDefaultTrainingGroup()
+        if (quotaMapKeys.includes(defaultTrainingGroup)) {
+            setActiveKey(defaultTrainingGroup)
+        } else {
+            setActiveKey(quotaMapKeys[0])
+        }
     }
 
     useEffect(() => {

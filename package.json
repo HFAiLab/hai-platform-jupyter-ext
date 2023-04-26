@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab_hai_platform_ext",
-  "version": "7.14.4",
+  "version": "7.15.1",
   "description": "A JupyterLab extension to use HF AiLab's service",
   "keywords": [
     "jupyter",
@@ -16,6 +16,11 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "style": "style/index.css",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HFAiLab/hai-platform-jupyter-ext"
+  },
+  "homepage": "https://github.com/HFAiLab/hai-platform-jupyter-ext",
   "scripts": {
     "build": " jlpm gen:icon && jlpm run build:lib && NODE_ENV=alpha NODE_OPTIONS=--max_old_space_size=8192 cross-env HF_FE_ENV=development jlpm run build:labextension:dev",
     "build:prod": "jlpm gen:icon && jlpm run build:lib && cross-env HF_FE_ENV=production jlpm run build:labextension --source-map True",
@@ -39,7 +44,7 @@
   },
   "dependencies": {
     "@hai-platform/sass-inline-svg": "2.0.0",
-    "@hai-platform/studio-pages": "0.19.0-alpha.1682329905.32209c5e",
+    "@hai-platform/studio-pages": "0.19.0-alpha.1682505883.c59ad262",
     "@jupyterlab/application": "^3.2.0",
     "@jupyterlab/apputils": "^3.2.0",
     "@jupyterlab/console": "^3.2.0",

@@ -15,7 +15,7 @@ import {
     getDocURL
 } from '@hai-platform/shared'
 
-export const VERSION = '7.14.4'
+export const VERSION = '7.15.1'
 
 export namespace CONSTS {
     export const WORKSPACE_ROOT_STR = '<workspace_root>'
@@ -106,17 +106,20 @@ declare global {
     }
 }
 
-const commonGetURLProps = {
-    internal: window._hf_user_if_in,
-    prepub: false // 默认都是线上，本地等其他场景的话手动修改
+// hint: 延后执行，防止相关变量没有初始化完成
+const getCommonGetURLProps = () => {
+    return {
+        internal: window._hf_user_if_in,
+        prepub: false // 默认都是线上，本地等其他场景的话手动修改
+    }
 }
 
 export function getBFFUrl() {
-    return getStudioBFFURL(commonGetURLProps)
+    return getStudioBFFURL(getCommonGetURLProps())
 }
 
 window.getProductionWSSUrl = () => {
-    return getStudioWSURL(commonGetURLProps)
+    return getStudioWSURL(getCommonGetURLProps())
 }
 
 export const getProxyUrl = () => `${getBFFUrl()}/proxy/s`
@@ -126,7 +129,7 @@ export const getMarsServerURL = () => {
     // 如果需要测试，直接在这里返回测试需要的地址
     return (
         window._d_mars_server_url ||
-        getStudioClusterServerURL(commonGetURLProps)
+        getStudioClusterServerURL(getCommonGetURLProps())
     )
 }
 
@@ -146,7 +149,7 @@ export const DebugAilabServerPathWhiteList = [
 ]
 
 export const jupyterGetDocURL = () => {
-    return getDocURL(commonGetURLProps)
+    return getDocURL(getCommonGetURLProps())
 }
 
 export const getGuides = () => {
